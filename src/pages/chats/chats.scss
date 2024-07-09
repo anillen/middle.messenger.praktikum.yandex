@@ -8,6 +8,8 @@
     height: 100vh;
 
     .chats-grid__left-column {
+        display: flex;
+        flex-direction: column;
 
         .left-column__header {
             background-color: $header-background-color;
@@ -15,7 +17,7 @@
             flex-direction: column;
             align-items: end;
             justify-content: space-between;
-            height: 10vh;
+            gap: 2rem;
             padding: 1rem;
         }
 
@@ -23,8 +25,8 @@
             background-color: $white-color;
             display: flex;
             flex-direction: column;
-            height: calc(100vh - 10vh - 2rem);
             overflow: scroll;
+            flex-grow: 1;
 
             .chat-list__item {
                 padding: 0.5rem;
@@ -53,6 +55,13 @@
                     .content__text {
                         color: $nonfocus-color;
                     }
+                }
+
+                .item__statuses {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: end;
                 }
             }
 

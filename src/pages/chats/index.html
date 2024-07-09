@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Чаты</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Чаты</title>
-</head>
-
-<body>
-  <main class="chats-grid">
-    {{> pages/chats/components/left-column/left-column }}
-    {{> pages/chats/components/right-column/right-column }}
-  </main>
-  <script type="module" src="chats.js"></script>
-</body>
-
+  <body>
+    <main class="chats-grid">
+      <div class="chats-grid__left-column">
+        <div class="left-column__header">
+          {{> components/link/link to="../account/" text="Профиль >"}}
+          {{> components/input/search-input}}
+      </div>
+        <div class="left-column__chat-list">
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+          {{> pages/chats/components/chat-list-item/chat-list-item}}
+      </div>
+      </div>
+      <div class="chats-grid__right-column">
+        <div class="right-column__chat">
+            <p>Выберите чат чтобы отправить сообщение</p>
+        </div>
+        <div class="right-column__message-actions">
+            {{> components/button/button image="/static/clip.svg"}}
+            <input class="primary-input" type="text" placeholder="Сообщение" name="message" />
+            {{> components/button/button class="button_primary button_circle" image="/static/arrow-right.svg"}}
+        </div>
+    </div>
+    </main>
+    <script type="module" src="chats.js"></script>
+  </body>
 </html>

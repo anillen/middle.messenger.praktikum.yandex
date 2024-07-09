@@ -27,18 +27,18 @@
             flex-direction: column;
             width: 100%;
 
-            .form__controls__label {
+            .controls__label {
                 font-size: 10px;
                 color: #999999;
             }
 
-            .form__controls__input {
+            .controls__input {
                 border-bottom: 1px solid $line-color;
                 padding-bottom: 0.3rem;
                 width: 100%;
             }
 
-            .form__controls__input::placeholder {
+            .controls__input::placeholder {
                 color: #FF9966;
             }
         }
