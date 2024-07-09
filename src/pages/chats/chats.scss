@@ -1,0 +1,50 @@
+@import "../../global.scss";
+@import "../../components/button/button.scss";
+@import "../../components/input/input.scss";
+
+.chats-grid {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    height: 100vh;
+
+    .chats-grid__left-column {
+
+        .chats-grid__left-column__header {
+            background-color: $header-background-color;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            justify-content: space-between;
+            height: 10vh;
+            padding: 1rem;
+        }
+
+        .chats-grid__left-column__chat-list {
+            background-color: $white-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 10vh - 2rem);
+        }
+    }
+
+    .chats-grid__right-column {
+        display: grid;
+        grid-template-rows: 95% 5%;
+
+        .chats-grid__right-column__chat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chats-grid__right-column__message-actions {
+            background-color: $footer-background-color;
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            padding: 0 2rem;
+        }
+    }
+}
