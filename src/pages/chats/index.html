@@ -9,25 +9,8 @@
 
 <body>
   <main class="chats-grid">
-    <div class="chats-grid__left-column">
-      <header class="chats-grid__left-column__header">
-        {{>link to="../account/" text="Профиль >"}}
-        {{>search-input}}
-      </header>
-      <div class="chats-grid__left-column__chat-list">
-        <p>Список чатов находится в разработке...</p>
-      </div>
-    </div>
-    <div class="chats-grid__right-column">
-      <div class="chats-grid__right-column__chat">
-        <p>Выберите чат чтобы отправить сообщение</p>
-      </div>
-      <div class="chats-grid__right-column__message-actions">
-        {{>button image="/static/clip.svg"}}
-        <input class="primary-input" type="text" placeholder="Сообщение" name="message" />
-        {{>button class="button_primary button_circle" image="/static/arrow-right.svg"}}
-      </div>
-    </div>
+    {{> pages/chats/components/left-column/left-column }}
+    {{> pages/chats/components/right-column/right-column }}
   </main>
   <script type="module" src="chats.js"></script>
 </body>

@@ -20,10 +20,7 @@ export default defineConfig({
     },
 
     plugins: [handlebars({
-        context: {
-            title: "test"
-        },
-        partialDirectory: resolve(__dirname, "src/partials")
+        partialDirectory: resolve(__dirname, "src/")
     })]
-    
+
 })

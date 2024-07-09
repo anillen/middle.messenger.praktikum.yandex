@@ -4,12 +4,12 @@
 
 .chats-grid {
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 2.5fr 7.5fr;
     height: 100vh;
 
     .chats-grid__left-column {
 
-        .chats-grid__left-column__header {
+        .left-column__header {
             background-color: $header-background-color;
             display: flex;
             flex-direction: column;
@@ -19,12 +19,46 @@
             padding: 1rem;
         }
 
-        .chats-grid__left-column__chat-list {
+        .left-column__chat-list {
             background-color: $white-color;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             height: calc(100vh - 10vh - 2rem);
+            overflow: scroll;
+
+            .chat-list__item {
+                padding: 0.5rem;
+                cursor: pointer;
+                display: grid;
+                grid-template-columns: 2fr 6fr 2fr;
+                column-gap: 1rem;
+                border-bottom: 1px solid $line-color;
+                transition: all 0.1s linear;
+
+                .item__image {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+
+                .item__content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    .content__title {
+                        font-weight: bold;
+                        color: black;
+                    }
+
+                    .content__text {
+                        color: $nonfocus-color;
+                    }
+                }
+            }
+
+            .chat-list__item:hover {
+                background-color: $focus-color;
+            }
         }
     }
 
@@ -32,13 +66,13 @@
         display: grid;
         grid-template-rows: 95% 5%;
 
-        .chats-grid__right-column__chat {
+        .right-column__chat {
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .chats-grid__right-column__message-actions {
+        .right-column__message-actions {
             background-color: $footer-background-color;
             display: flex;
             align-items: center;
