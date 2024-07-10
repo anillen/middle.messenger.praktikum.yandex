@@ -1,0 +1,20 @@
+.profile-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .profile-input-wrapper__label {
+        font-weight: 600;
+    }
+
+    .profile-input-wrapper__input {
+        text-align: end;
+        color: black;
+    }
+
+    .profile-input-wrapper__input:disabled {
+        color: $second-color;
+    }
+
+}

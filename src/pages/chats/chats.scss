@@ -2,14 +2,20 @@
 @import "../../components/button/button.scss";
 @import "../../components/input/input.scss";
 
+
+.date {
+    font-size: 11px;
+    text-align: right;
+}
+
 .chats-grid {
     display: grid;
     grid-template-columns: 2.5fr 7.5fr;
-    height: 100vh;
 
     .chats-grid__left-column {
         display: flex;
         flex-direction: column;
+        height: 100vh;
 
         .left-column__header {
             background-color: $header-background-color;
@@ -38,8 +44,8 @@
                 transition: all 0.1s linear;
 
                 .item__image {
-                    max-width: 100%;
-                    max-height: 100%;
+                    max-width: 5rem;
+                    max-height: 5rem;
                 }
 
                 .item__content {
@@ -52,8 +58,23 @@
                         color: black;
                     }
 
-                    .content__text {
-                        color: $nonfocus-color;
+                    .content__message {
+                        display: flex;
+                        gap: 0.2rem;
+
+                        .message__prev {
+                            color: black;
+                            font-weight: bold;
+                        }
+
+                        .message__text {
+                            color: $nonfocus-color;
+                            line-height: 1.2em;
+                            max-height: 2.4em;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
                     }
                 }
 
@@ -61,8 +82,24 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    align-items: end;
+                    padding: 0.2rem 0;
+                    align-items: flex-end;
+
+                    .statuses__unread-count {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: $primary-color;
+                        color: $white-color;
+                        border-radius: 50%;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
                 }
+            }
+
+            .chat-list__item_active {
+                background-color: $focus-color;
             }
 
             .chat-list__item:hover {
@@ -73,12 +110,88 @@
 
     .chats-grid__right-column {
         display: grid;
-        grid-template-rows: 95% 5%;
+        grid-template-rows: 5vh 90vh 5vh;
 
-        .right-column__chat {
+        .right-column__header {
+            background-color: $header-background-color;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            padding: 0 0.5rem;
+
+            .header__contact-wrapper {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                overflow: hidden;
+
+                .contact-wrapper__image {
+                    max-width: 3rem;
+                    max-height: 3rem;
+                }
+
+                .contact-wrapper__contact-name {
+                    font-weight: bold;
+                    color: black;
+                }
+            }
+        }
+
+        .right-column__message-list {
+            display: flex;
+            flex-direction: column;
+            overflow: scroll;
+            max-height: 90vh;
+
+            .message-list__date {
+                text-align: center;
+                font-weight: 600;
+                margin-top: auto;
+            }
+
+            .message-list__wrapper {
+                display: flex;
+
+                .message-list__wrapper__item {
+                    max-width: 40%;
+                    width: fit-content;
+                    display: inline-block;
+                    background-color: $white-color;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    border-top-left-radius: 0px;
+                    margin: 0.5rem 1rem;
+
+                    .item__text {
+                        color: black;
+                        white-space: pre-line;
+
+                        .item__text__statuses {
+                            float: right;
+                            display: flex;
+                            padding-left: 0.2rem;
+                            padding-top: 0.2rem;
+                            gap: 0.2rem;
+                        }
+                    }
+
+                    .item__image {
+                        max-height: 25rem;
+                        max-width: 25rem;
+                    }
+                }
+            }
+
+            .message-list__wrapper_my-message {
+                justify-content: end;
+
+                .message-list__wrapper__item {
+                    display: inline;
+                    background-color: $second-color;
+                    border-top-left-radius: 12px;
+                    border-bottom-right-radius: 0px;
+                }
+            }
+
         }
 
         .right-column__message-actions {

@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Профиль</title>
-</head>
-
-<body>
-    <script type="module" src="account.js"></script>
-</body>
-
+  </head>
+  <body>
+    <main class="account-container">
+      {{>components/back-sidebar/back-sidebar}}
+      <form class="account-container__profile">
+        <div class="profile__card">
+          <div class="card__avatar-wrapper">
+            <div class="row-wrapper__avatar" name="avatar">
+              <img class="avatar__image" src="/static/image-icon.svg" />
+              <div class="avatar__hover-wrapper">
+                <p class="hover-wrapper__text">Поменять аватар</p>
+              </div>
+            </div>
+            <p class="row-wrapper__user-name">Иван</p>
+          </div>
+          <div class="card__data-wrapper">
+            {{> pages/account/components/input/input labelText="Почта"
+            defaultValue="pochta@yadnex.ru" isDisabled="true"}} 
+            {{>
+            pages/account/components/input/input labelText="Логин"
+            defaultValue="ivanivanov" isDisabled="true"}} {{> pages/account/components/input/input
+            labelText="Имя" defaultValue="Иван" isDisabled="true"}} {{>
+            pages/account/components/input/input labelText="Фамилия"
+            defaultValue="Иванов" isDisabled="true"}} {{> pages/account/components/input/input
+            labelText="Имя в чате" defaultValue="Иван" isDisabled="true"}} {{>
+            pages/account/components/input/input labelText="Телефон"
+            defaultValue="+7 (909) 967 30 30" isDisabled="true"}}
+          </div>
+          <div class="card__actions-wrapper">
+            <div class="row">
+              {{> components/button/button class="button_primary-color"
+              text="Изменить данные" name="switch-data-button" type="button"}}
+            </div>
+            <div class="row">
+              {{> components/button/button class="button_primary-color"
+              text="Изменить пароль" name="switch-password-button"
+              type="button"}}
+            </div>
+            <div class="row">
+              {{> components/button/button class="button_red-color" text="Выйти"
+              name="exit-button" type="button"}}
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="account.ts"></script>
+  </body>
 </html>
