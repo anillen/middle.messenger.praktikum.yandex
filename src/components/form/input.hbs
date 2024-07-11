@@ -1,0 +1,7 @@
+<div class="form__controls">
+    {{#if labelText}}
+    <label class="controls__label" for="{{name}}">{{labelText}}</label>
+    {{/if}}
+    <input name="{{name}}" placeholder="{{placeholder}}" required="{{isRequired}}" type="{{type}}"
+        class="controls__input" />
+</div>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Чаты</title>
+  </head>
+
+  <body>
+    <main class="chats-grid">
+      <div class="chats-grid__left-column">
+        <div class="left-column__header">
+          {{> components/link/link class="link_no-decoration" to="../account/"
+          text="Профиль >"}} {{> components/input/search-input}}
+        </div>
+        <ul class="left-column__chat-list">
+          <!--Chat list-->
+          {{> pages/chats/components/chat-list-item/chat-list-item
+          contactName="Андрей" contentText="Изображение" date="11:12"
+          unreadCount="1"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item
+          contactName="Киноклуб" contentText="стикер" date="12:00"
+          isMyMessage="true"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item
+          contactName="Илья" contentText="Друзья, у меня для вас особенный
+          выпуск новостей!.." date="11:12" unreadCount="4"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item
+          contactName="Вадим" contentText="Круто!" date="Пт" isMyMessage="true"
+          isActive="true"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item
+          contactName="тет-а-теты" contentText="И Human Interface Guidelines и
+          Material Design рекомендуют..." date="Ср"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item contactName="1,
+          2, 3" contentText="Миллионы россиян ежедневно проводят десятки часов
+          свое..." date="Пн"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item
+          contactName="Design Destroyer" contentText="В 2008 году художник Jon
+          Rafman  начал собирать..." date="Пн"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item
+          contactName="Day." contentText="Так увлёкся работой по курсу, что
+          совсем забыл его анонсир..." date="1 Мая 2024"}} {{>
+          pages/chats/components/chat-list-item/chat-list-item contactName="Стас
+          Рогозин" contentText="Можно или сегодня или завтра вечером." date="12
+          Апр 2024"}}
+          <!--End chat list-->
+        </ul>
+      </div>
+      <div class="chats-grid__right-column">
+        <div class="right-column__header">
+          {{> pages/chats/components/header-contact/header-contact
+          image="/static/circle.svg" name="Вадим"}} {{> components/button/button
+          image="/static/menu.svg"}}
+        </div>
+        <div class="right-column__message-list">
+          <p class="message-list__date">19 июля</p>
+          <!--Message list-->
+          {{> pages/chats/components/message-list-item/message-list-item
+          text="Привет! Смотри, тут всплыл интересный кусок лунной космической
+          истории — НАСА в какой-то момент попросила Хассельблад адаптировать
+          модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты
+          летали с моделью 500 EL — и к слову говоря, все тушки этих камер все
+          еще находятся на поверхности Луны, так как астронавты с собой забрали
+          только кассеты с пленкой. Хассельблад в итоге адаптировал SWC для
+          космоса, но что-то пошло не так и наракету они так никогда и не
+          попали. Всего их было произведено 25 штук, одну из них недавно продали
+          на аукционе за 45000 евро." date="11:56"}} {{>
+          pages/chats/components/message-list-item/message-list-item
+          image="/static/message-image.jpg" date="12:00"}} {{>
+          pages/chats/components/message-list-item/message-list-item
+          text="Круто!" date="12:01" isMyMessage="true"}}
+          <!--End message list-->
+        </div>
+        <div class="right-column__message-actions">
+          {{> components/button/button image="/static/clip.svg"}}
+          <input
+            class="primary-input"
+            type="text"
+            placeholder="Сообщение"
+            name="message"
+          />
+          {{> components/button/button class="button_primary button_circle"
+          image="/static/arrow-right.svg"}}
+        </div>
+      </div>
+    </main>
+    <script type="module" src="chats.ts"></script>
+  </body>
+</html>

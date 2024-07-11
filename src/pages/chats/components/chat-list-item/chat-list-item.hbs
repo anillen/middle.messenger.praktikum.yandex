@@ -1,0 +1,18 @@
+<li class="chat-list__item {{#if isActive}}chat-list__item_active{{/if}}">
+  <img class="item__image" src="/static/circle.svg" />
+  <div class="item__content">
+    <p class="content__title">{{contactName}}</p>
+    <div class="content__message">
+      {{#if isMyMessage}}
+        <span class="message__prev">Вы:</span>
+      {{/if}}
+      <p class="message__text">{{contentText}}</p>
+    </div>
+  </div>
+  <div class="item__statuses">
+    <span class="date">{{date}}</span>
+    {{#if unreadCount}}
+      <span class="statuses__unread-count">{{unreadCount}}</span>
+    {{/if}}
+  </div>
+</li>
