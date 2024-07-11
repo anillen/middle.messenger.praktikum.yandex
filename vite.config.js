@@ -7,12 +7,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        chats: resolve(__dirname, "src/pages/chats/index.html"),
-        login: resolve(__dirname, "src/pages/login/index.html"),
-        registration: resolve(__dirname, "src/pages/registration/index.html"),
-        account: resolve(__dirname, "src/pages/account/index.html"),
-        serverError: resolve(__dirname, "src/pages/error/serverError.html"),
-        notFound: resolve(__dirname, "src/pages/error/notFound.html"),
+        main: resolve(__dirname, "./index.html"),
+        chats: resolve(__dirname, "./src/pages/chats/index.html"),
+        login: resolve(__dirname, "./src/pages/login/index.html"),
+        registration: resolve(__dirname, "./src/pages/registration/index.html"),
+        account: resolve(__dirname, "./src/pages/account/index.html"),
+        serverError: resolve(__dirname, "./src/pages/error/serverError.html"),
+        notFound: resolve(__dirname, "./src/pages/error/notFound.html"),
       },
     },
   },
