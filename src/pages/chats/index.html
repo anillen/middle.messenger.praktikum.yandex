@@ -10,8 +10,8 @@
     <main class="chats-grid">
       <div class="chats-grid__left-column">
         <div class="left-column__header">
-          {{> components/link/link to="../account/" text="Профиль >"}} {{>
-          components/input/search-input}}
+          {{> components/link/link class="link_no-decoration" to="../account/"
+          text="Профиль >"}} {{> components/input/search-input}}
         </div>
         <ul class="left-column__chat-list">
           <!--Chat list-->
@@ -48,8 +48,8 @@
       <div class="chats-grid__right-column">
         <div class="right-column__header">
           {{> pages/chats/components/header-contact/header-contact
-          image="/static/circle.svg" name="Вадим"}} 
-          {{> components/button/button image="/static/menu.svg"}}
+          image="/static/circle.svg" name="Вадим"}} {{> components/button/button
+          image="/static/menu.svg"}}
         </div>
         <div class="right-column__message-list">
           <p class="message-list__date">19 июля</p>
@@ -65,8 +65,8 @@
           попали. Всего их было произведено 25 штук, одну из них недавно продали
           на аукционе за 45000 евро." date="11:56"}} {{>
           pages/chats/components/message-list-item/message-list-item
-          image="/static/message-image.jpg" date="12:00"}} 
-          {{> pages/chats/components/message-list-item/message-list-item
+          image="/static/message-image.jpg" date="12:00"}} {{>
+          pages/chats/components/message-list-item/message-list-item
           text="Круто!" date="12:01" isMyMessage="true"}}
           <!--End message list-->
         </div>

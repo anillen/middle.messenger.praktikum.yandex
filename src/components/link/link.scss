@@ -1,0 +1,14 @@
+@import "../../global.scss";
+
+.link {
+    color: $white-color;
+    font-weight: 600;
+}
+
+.link_no-decoration {
+    text-decoration: none;
+}
+
+.link_primary {
+    color: $primary_color;
+}

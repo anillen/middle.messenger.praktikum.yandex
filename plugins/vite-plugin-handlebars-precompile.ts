@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import { PluginOption } from "vite";
 
-export default function handlebars(): PluginOption {
+export default function handlebarsPrecompile(): PluginOption {
   const fileRegexp = /\.hbs$|\.handlebars$/;
 
   return {
@@ -18,7 +18,7 @@ export default function handlebars(): PluginOption {
             `;
 
       return {
-        code
+        code,
       };
     },
   };

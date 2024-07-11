@@ -3,7 +3,10 @@
   <input
     class="profile-input-wrapper__input"
     type="{{type}}"
+    {{#if defaultValue}}
     value="{{defaultValue}}"
+    {{/if}}
+    name="{{name}}"
     {{#if isDisabled}}
     disabled
     {{/if}}

@@ -8,8 +8,9 @@
     border-bottom: 1px solid $line-color;
     padding: 0.4rem;
 }
-.row:last-child{
-    border:none;
+
+.row:last-child {
+    border: none;
 }
 
 .account-container {
@@ -80,9 +81,16 @@
             }
 
             .card__actions-wrapper {
-                .button{
+                display: flex;
+                flex-direction: column;
+
+                .button {
                     font-weight: 600;
                 }
+            }
+
+            .card__actions-wrapper_center {
+                align-items: center;
             }
         }
     }
