@@ -4,6 +4,10 @@ import { defineConfig } from "vite";
 import handlebarsPrecompile from "./plugins/vite-plugin-handlebars-precompile";
 
 export default defineConfig({
+  server: {
+    port: 3001,
+  },
+
   build: {
     rollupOptions: {
       input: {
@@ -17,11 +21,6 @@ export default defineConfig({
       },
     },
   },
-
-  server: {
-    port: 3000,
-  },
-
   plugins: [
     handlebars({
       partialDirectory: resolve(__dirname, "src/"),
