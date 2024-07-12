@@ -1,0 +1,25 @@
+.primary-input {
+    background-color: $white-color;
+    border-radius: 6px;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.primary-input::placeholder {
+    color: $second-color;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+
+    .search-container__icon {
+        position: absolute;
+    }
+
+    .search-container__input {
+        padding-left: 2rem;
+    }
+}

@@ -1,0 +1,9 @@
+<div class="message-list__wrapper {{#if isMyMessage}} message-list__wrapper_my-message {{/if}}">
+    <div class="message-list__wrapper__item">
+        {{#if image}}
+        <img class="item__image" src="{{image}}" alt="{{imageName}}"/>
+        {{/if}}
+        <p class="item__text">{{text}} <span class="item__text__statuses">{{#if isMyMessage}}<img src="/static/readed.svg"/>{{/if}}<span class="date">{{date}}</span></span>
+        </p>
+    </div>
+</div>

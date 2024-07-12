@@ -1,0 +1,15 @@
+@import "./src/global.scss";
+
+.link-list {
+    list-style: none;
+
+    li {
+        a {
+            font-size: 18px;
+        }
+
+        a:hover {
+            color: $focus-color;
+        }
+    }
+}
