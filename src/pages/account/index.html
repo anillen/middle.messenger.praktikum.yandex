@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,18 +20,12 @@
             <p class="row-wrapper__user-name">Иван</p>
           </div>
           <div class="card__data-wrapper" id="data-wrapper">
-            {{> pages/account/components/input/input labelText="Почта"
-            defaultValue="pochta@yadnex.ru" isDisabled="true"}} {{>
-            pages/account/components/input/input labelText="Логин"
-            defaultValue="ivanivanov" isDisabled="true"}} {{>
-            pages/account/components/input/input labelText="Имя"
-            defaultValue="Иван" isDisabled="true"}} {{>
-            pages/account/components/input/input labelText="Фамилия"
-            defaultValue="Иванов" isDisabled="true"}} {{>
-            pages/account/components/input/input labelText="Имя в чате"
-            defaultValue="Иван" isDisabled="true"}} {{>
-            pages/account/components/input/input labelText="Телефон"
-            defaultValue="+7 (909) 967 30 30" isDisabled="true"}}
+            {{> pages/account/components/input/input labelText="Почта" name="email" defaultValue="pochta@yadnex.ru" isDisabled="true"}} 
+            {{> pages/account/components/input/input labelText="Логин" name="login" defaultValue="ivanivanov" isDisabled="true"}}
+            {{> pages/account/components/input/input labelText="Имя" name="first_name" defaultValue="Иван" isDisabled="true"}}
+            {{> pages/account/components/input/input labelText="Фамилия" name="second_name" defaultValue="Иванов" isDisabled="true"}}
+            {{> pages/account/components/input/input labelText="Имя в чате" name="display_name" defaultValue="Иван" isDisabled="true"}} 
+            {{> pages/account/components/input/input labelText="Телефон" name="phone" defaultValue="+7 (909) 967 30 30" isDisabled="true"}}
           </div>
           <div class="card__actions-wrapper" id="actions-wrapper">
             <div class="row">
@@ -40,8 +34,7 @@
             </div>
             <div class="row">
               {{> components/button/button class="button_primary-color"
-              text="Изменить пароль" name="switch-password-button"
-              type="button"}}
+              text="Изменить пароль" name="switch-password-button" type="button"}}
             </div>
             <div class="row">
               {{> components/button/button class="button_red-color" text="Выйти"
