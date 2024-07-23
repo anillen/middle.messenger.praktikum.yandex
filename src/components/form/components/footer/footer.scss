@@ -1,0 +1,14 @@
+@import "/main.scss";
+
+.form__footer {
+    background-color: $footer-background-color;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    min-height: 7rem;
+    color: $white-color;
+}

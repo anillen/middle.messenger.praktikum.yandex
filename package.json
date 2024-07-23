@@ -19,6 +19,7 @@
     "sass-loader": "^14.2.1",
     "scss": "^0.2.4",
     "scss-loader": "^0.0.1",
+    "uuid": "^10.0.0",
     "vite-plugin-handlebars": "^2.0.0"
   }
 }

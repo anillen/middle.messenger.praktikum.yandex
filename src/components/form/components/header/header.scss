@@ -1,0 +1,12 @@
+@import "/main.scss";
+
+.form__header {
+    background-color: $header-background-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    min-height: 7rem;
+    color: $white-color;
+}

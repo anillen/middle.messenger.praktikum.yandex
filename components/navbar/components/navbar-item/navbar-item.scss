@@ -1,0 +1,9 @@
+@import "/main.scss";
+
+a {
+    font-size: 18px;
+}
+
+a:hover {
+    color: $focus-color;
+}

@@ -1,6 +1,7 @@
 import Handlebars from "handlebars";
 import { PluginOption } from "vite";
 
+
 export default function handlebarsPrecompile(): PluginOption {
   const fileRegexp = /\.hbs$|\.handlebars$/;
 
