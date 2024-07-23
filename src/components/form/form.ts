@@ -1,11 +1,14 @@
 import Block from "../../../utils/Block";
+import FormBody from "./components/body/body";
+import FormFooter from "./components/footer/footer";
+import FormHeader from "./components/header/header";
 import formTemplate from "./form.hbs";
 import "./form.scss";
 
 class FormProps {
-  formHeader: Block;
-  formBody?: Block;
-  formFooter?: Block;
+  formHeader: FormHeader;
+  formBody?: FormBody;
+  formFooter?: FormFooter;
 }
 
 export default class Form extends Block {

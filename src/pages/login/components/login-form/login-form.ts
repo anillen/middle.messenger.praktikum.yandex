@@ -1,11 +1,11 @@
 import Form from "../../../../components/form/form";
 import FormHeader from "../../../../components/form/components/header/header";
-import "./login-form.scss";
 import LoginFormBody from "./components/form-body/form-body";
 import Button from "../../../../components/button/button";
 import Link from "../../../../components/link/link";
 import FormFooter from "../../../../components/form/components/footer/footer";
-
+import loginFormTemplate from "./login-form.hbs";
+import "./login-form.scss";
 export default class LoginForm extends Form {
   constructor() {
     super({
