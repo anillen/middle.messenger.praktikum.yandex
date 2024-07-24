@@ -9,6 +9,7 @@ class FormFooterProperties {
 
 export default class FormFooter extends Block {
   constructor(formFooterProps: FormFooterProperties) {
+    
     super("div", { ...formFooterProps, attributes: { class: "form__footer" } });
   }
 

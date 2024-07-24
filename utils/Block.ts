@@ -1,12 +1,12 @@
 import EventBus from "./EventBus";
 import { v4 as makeUUID } from "uuid";
 
-interface MetaInfo {
+class MetaInfo {
   tagName: string;
   props: object;
 }
 
-interface Children {
+class Children {
   [key: string]: Block;
 }
 
@@ -152,6 +152,11 @@ export default class Block {
       if (value instanceof Block) {
         children[key] = value;
       }
+      if (Array.isArray(value)) {
+        value.forEach((item, index) => {
+          children[`${key}${index}`] = item;
+        });
+      }
       props[key] = value;
     });
 
@@ -191,9 +196,11 @@ export default class Block {
 
     if (!this.props.attributes) return;
 
-    Object.keys(this.props.attributes).forEach((key) =>
-      this._element.setAttribute(key, this.props.attributes[key])
-    );
+    Object.keys(this.props.attributes).forEach((key) => {
+      if (this.props.attributes[key]) {
+        this._element.setAttribute(key, this.props.attributes[key]);
+      }
+    });
   }
 
   private _addEvents(): void {

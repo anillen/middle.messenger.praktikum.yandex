@@ -1,3 +1,5 @@
+@import "/main.scss";
+
 .primary-input {
     background-color: $white-color;
     border-radius: 6px;
@@ -9,17 +11,17 @@
     color: $second-color;
 }
 
-.search-container {
+.input-container {
     display: flex;
     align-items: center;
     width: 100%;
     position: relative;
 
-    .search-container__icon {
+    .input__icon {
         position: absolute;
     }
 
-    .search-container__input {
+    .input_icon {
         padding-left: 2rem;
     }
 }

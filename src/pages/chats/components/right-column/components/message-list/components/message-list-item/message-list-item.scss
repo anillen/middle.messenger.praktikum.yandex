@@ -1,0 +1,51 @@
+@import "/main.scss";
+
+.message-list__date {
+    text-align: center;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+.message-list__wrapper {
+    display: flex;
+
+    .message-list__wrapper__item {
+        max-width: 40%;
+        width: fit-content;
+        display: inline-block;
+        background-color: $white-color;
+        padding: 1rem;
+        border-radius: 12px;
+        border-top-left-radius: 0px;
+        margin: 0.5rem 1rem;
+
+        .item__text {
+            color: black;
+            white-space: pre-line;
+
+            .item__text__statuses {
+                float: right;
+                display: flex;
+                padding-left: 0.2rem;
+                padding-top: 0.2rem;
+                gap: 0.2rem;
+            }
+        }
+
+        .item__image {
+            max-height: 25rem;
+            max-width: 25rem;
+        }
+    }
+}
+
+.message-list__wrapper_my-message {
+    justify-content: end;
+
+    .message-list__wrapper__item {
+        display: inline;
+        background-color: $second-color;
+        border-top-left-radius: 12px;
+        border-bottom-right-radius: 0px;
+    }
+}

@@ -1,0 +1,9 @@
+@import "/main.scss";
+
+.left-column__chat-list {
+    background-color: $white-color;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    flex-grow: 1;
+}
