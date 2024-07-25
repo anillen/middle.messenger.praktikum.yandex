@@ -1,8 +1,4 @@
-@import "../../global.scss";
-@import "../../components/back-sidebar/back-sidebar.scss";
-@import "../../components/button/button.scss";
-@import "./components/input/input.scss";
-
+@import "/main.scss";
 
 .row {
     border-bottom: 1px solid $line-color;
@@ -78,19 +74,6 @@
                     font-weight: bold;
                     font-size: 16px;
                 }
-            }
-
-            .card__actions-wrapper {
-                display: flex;
-                flex-direction: column;
-
-                .button {
-                    font-weight: 600;
-                }
-            }
-
-            .card__actions-wrapper_center {
-                align-items: center;
             }
         }
     }

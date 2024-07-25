@@ -1,3 +1,5 @@
+@import "/main.scss";
+
 .profile-input-wrapper {
     display: flex;
     align-items: center;
@@ -15,6 +17,10 @@
 
     .profile-input-wrapper__input:disabled {
         color: $second-color;
+    }
+
+    .profile-input-wrapper__input_error {
+        color: $danger-color;
     }
 
 }

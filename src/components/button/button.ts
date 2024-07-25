@@ -8,6 +8,7 @@ class ButtonProperties {
   class?: string;
   image?: string;
   text?: string;
+  events?: object;
 }
 
 export default class Button extends Block {
@@ -20,6 +21,7 @@ export default class Button extends Block {
       },
       image: buttonProps.image,
       text: buttonProps.text,
+      events: buttonProps.events,
     });
   }
   public render(): Node {

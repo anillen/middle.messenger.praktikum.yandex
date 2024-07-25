@@ -76,7 +76,10 @@ export default class Block {
     Object.assign(this.props, nextProps);
   };
 
-  public compile(template: Function, props: object): Node {
+  public compile(template: Function, propsAndChildren: object): Node {
+    const { props, children } = this._getChildren(propsAndChildren);
+    this.children = children;
+
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {
