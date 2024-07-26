@@ -8,13 +8,16 @@
 ## Демо-версия
 
 Данный проект находится в стадии разработки, поэтому вы можете просматривать текующий интерфейс по ссылке:
-- [Авторизация](https://anillenmessenger.netlify.app/src/pages/login/)
-- [Регистрация](https://anillenmessenger.netlify.app/src/pages/registration/)
-- [Чаты](https://anillenmessenger.netlify.app/src/pages/chats/)
-- [Профиль](https://anillenmessenger.netlify.app/src/pages/account/)
+
+- [Авторизация](https://anillenmessenger.netlify.app/login)
+- [Регистрация](https://anillenmessenger.netlify.app/registration)
+- [Чаты](https://anillenmessenger.netlify.app/chats)
+- [Профиль](https://anillenmessenger.netlify.app/account)
+
 ### Страницы ошибок:
-- [404](https://anillenmessenger.netlify.app/src/pages/error/notfound)
-- [5**](https://anillenmessenger.netlify.app/src/pages/error/servererror)
+
+- [404](https://anillenmessenger.netlify.app/error/404)
+- [5\*\*](https://anillenmessenger.netlify.app/error/500)
 
 ---
 
@@ -22,10 +25,24 @@
 
 Проект позволяет понять основы построения веб приложения с помощью шаблонизатора Handlebars, с использованием сборщика Vite и препроцессора Sass.
 
+Данное веб-приложение является SPA. В основе лежит компонент Block, который имеет свой жизненный цикл на основе технологии EventBus, что позволяет не обновлять страницу при изменении страниц и данных.
+
 ---
+
+## Используемые технологии
+
+![Static Badge](https://img.shields.io/badge/typescript-blue)
+![Static Badge](https://img.shields.io/badge/handlebars-orange)
+![Static Badge](https://img.shields.io/badge/vite-purple)
+![Static Badge](https://img.shields.io/badge/eslint-blue)
+![Static Badge](https://img.shields.io/badge/git-black)
+
+---
+
 ## Как установить и запустить проект?
 
 Чтобы установить проект - необходимо:
+
 1. `git clone [ссылка на репозиторий]` - клонировать репозиторий к себе на локальный компьютер.
 2. `npm run dev` - запустить проект в режиме разработки
 3. `npm run build` - собрать проект
