@@ -6,10 +6,6 @@ class MetaInfo {
   props: object;
 }
 
-class Children {
-  [key: string]: Block;
-}
-
 class Properties {
   [key: string]: any;
 }
@@ -24,27 +20,28 @@ export default class Block {
 
   public props: Properties;
   public eventBus: EventBus;
-  public children: Children;
+  public children: object;
+  public attributes: object;
 
   private _element: HTMLElement;
   private _meta: MetaInfo;
   private _id: string;
 
   constructor(tagName: string = "div", propsAndChildren: object = {}) {
-    const { children, props } = this._getChildren(propsAndChildren);
+    const { children, props, attributes } = this._parseProps(propsAndChildren);
 
     this._meta = {
       tagName,
       props,
     };
 
-    this.children = children;
-
     this._id = makeUUID();
 
     this.props = this.props?.settings.withInternalID
       ? this._makeProxyProps({ ...props, __id: this._id })
       : this._makeProxyProps(props);
+    this.children = this._makeProxyProps(children);
+    this.attributes = this._makeProxyProps(attributes);
 
     const eventBus = new EventBus();
     this.eventBus = eventBus;
@@ -72,14 +69,14 @@ export default class Block {
     if (!nextProps) {
       return;
     }
+    const { children, props, attributes } = this._parseProps(nextProps);
 
-    Object.assign(this.props, nextProps);
+    Object.assign(this.props, props);
+    Object.assign(this.children, children);
+    Object.assign(this.attributes, attributes);
   };
 
-  public compile(template: Function, propsAndChildren: object): Node {
-    const { props, children } = this._getChildren(propsAndChildren);
-    this.children = children;
-
+  public compile(template: Function, props: object): Node {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {
@@ -126,6 +123,7 @@ export default class Block {
     if (!response) {
       return;
     }
+
     this._render();
   }
 
@@ -136,6 +134,13 @@ export default class Block {
     this._element.innerHTML = "";
 
     this._element.appendChild(block);
+    
+    Object.keys(this.attributes).forEach((key) => {
+      if (this.attributes[key]) {
+        this._element.setAttribute(key, this.attributes[key]);
+      }
+    });
+
     this._addEvents();
   }
 
@@ -147,23 +152,27 @@ export default class Block {
     return element;
   }
 
-  private _getChildren(propsAndChildren: object): any {
+  private _parseProps(propsAndChildren: object): any {
     const children: object = {};
     const props: object = {};
+    let attributes: object = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
+      if (key == "attributes") attributes = value;
+
       if (value instanceof Block) {
         children[key] = value;
       }
+
       if (Array.isArray(value)) {
         value.forEach((item, index) => {
           children[`${key}${index}`] = item;
         });
       }
+
       props[key] = value;
     });
-
-    return { children, props };
+    return { children, props, attributes };
   }
 
   private _registerEvents(eventBus: EventBus): void {
@@ -183,7 +192,6 @@ export default class Block {
       },
       set(target, prop, value) {
         target[prop] = value;
-
         self.eventBus.emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
         return true;
       },
@@ -196,14 +204,6 @@ export default class Block {
   private _createResources(): void {
     const { tagName } = this._meta;
     this._element = this._createDocumentElement(tagName);
-
-    if (!this.props.attributes) return;
-
-    Object.keys(this.props.attributes).forEach((key) => {
-      if (this.props.attributes[key]) {
-        this._element.setAttribute(key, this.props.attributes[key]);
-      }
-    });
   }
 
   private _addEvents(): void {

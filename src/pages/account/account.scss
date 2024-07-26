@@ -1,14 +1,5 @@
 @import "/main.scss";
 
-.row {
-    border-bottom: 1px solid $line-color;
-    padding: 0.4rem;
-}
-
-.row:last-child {
-    border: none;
-}
-
 .account-container {
     display: grid;
     grid-template-columns: 4rem auto;

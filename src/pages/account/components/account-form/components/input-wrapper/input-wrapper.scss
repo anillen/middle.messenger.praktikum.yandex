@@ -1,5 +1,23 @@
 @import "/main.scss";
 
+.row {
+    border-bottom: 1px solid $line-color;
+    padding: 0.4rem;
+}
+
+.row:last-child {
+    border: none;
+}
+
+.row_error {
+    border-bottom: 1px solid $danger-color;
+    padding: 0.4rem;
+}
+.row_valid{
+    border-bottom: 1px solid $accept-color;
+    padding: 0.4rem;
+}
+
 .profile-input-wrapper {
     display: flex;
     align-items: center;
@@ -19,8 +37,8 @@
         color: $second-color;
     }
 
-    .profile-input-wrapper__input_error {
+    .error-message {
+        display: none;
         color: $danger-color;
     }
-
 }

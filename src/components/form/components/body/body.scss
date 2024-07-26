@@ -20,4 +20,16 @@
             color: #999999;
         }
     }
+
+    .form_controls_error {
+        input {
+            color: $danger-color;
+        }
+    }
+
+    .form_controls_valid {
+        input {
+            color: $accept-color;
+        }
+    }
 }

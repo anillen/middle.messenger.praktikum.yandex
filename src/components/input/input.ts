@@ -1,5 +1,4 @@
 import Block from "../../../utils/Block";
-import Image from "../image/image";
 import inputTemplate from "./input.hbs";
 import "./input.scss";
 
@@ -11,6 +10,7 @@ class InputProperties {
   value?: string;
   events?: object;
   name?: string;
+  required?:boolean = false;
 }
 
 export default class Input extends Block {
@@ -25,16 +25,3 @@ export default class Input extends Block {
     return this.compile(inputTemplate, this.props);
   }
 }
-
-/**{{#if icon}}
-  {{{icon}}}
-{{/if}}
-<input
-  class="{{#if icon}}input_icon{{/if}} {{class}}"
-  {{#if placeholder}}
-    placeholder="{{placeholder}}"
-  {{/if}}
-  {{#if type}}
-    type="{{type}}"
-  {{/if}}
-/> */

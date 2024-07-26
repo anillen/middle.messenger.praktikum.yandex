@@ -1,7 +1,6 @@
 import "./chats.scss";
 import Block from "../../../utils/Block";
 import chatsTemplate from "./chats.hbs";
-import { render } from "../../../utils/renderDOM";
 import LeftColumn from "./components/left-column/left-column";
 import RightColumn from "./components/right-column/right-column";
 
@@ -18,8 +17,3 @@ export default class Chats extends Block {
     return this.compile(chatsTemplate, this.props);
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const chats = new Chats();
-  render("main", chats);
-});

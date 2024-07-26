@@ -6,6 +6,12 @@ import FormFooter from "../../../../components/form/components/footer/footer";
 import RegisterFormBody from "./components/form-body/form-body";
 import "./register-form.scss";
 import registerFormTemplate from "./register-form.hbs";
+import GetFormData from "../../../../../utils/GetFormData";
+
+const submitFormHandler = (e: Event) => {
+  e.preventDefault();
+  console.log(GetFormData(e.target));
+};
 export default class RegisterForm extends Form {
   constructor() {
     super({
@@ -20,9 +26,12 @@ export default class RegisterForm extends Form {
         secondButton: new Link({
           text: "Войти",
           class: "link_no-decoration",
-          to: "/src/pages/login/",
+          to: "/login",
         }),
       }),
+      events: {
+        submit: submitFormHandler,
+      },
     });
   }
 }

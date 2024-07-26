@@ -6,6 +6,14 @@ import Link from "../../../../components/link/link";
 import FormFooter from "../../../../components/form/components/footer/footer";
 import loginFormTemplate from "./login-form.hbs";
 import "./login-form.scss";
+
+import GetFormData from "../../../../../utils/GetFormData";
+
+const submitFormHandler = (e: Event) => {
+  e.preventDefault();
+  console.log(GetFormData(e.target));
+};
+
 export default class LoginForm extends Form {
   constructor() {
     super({
@@ -20,10 +28,13 @@ export default class LoginForm extends Form {
         }),
         secondButton: new Link({
           text: "Создать аккаунт",
-          to: "../registration/",
+          to: "/registration",
           class: "link_no-decoration",
         }),
       }),
+      events: {
+        submit: submitFormHandler,
+      },
     });
   }
 }

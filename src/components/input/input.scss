@@ -10,18 +10,3 @@
 .primary-input::placeholder {
     color: $second-color;
 }
-
-.input-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    position: relative;
-
-    .input__icon {
-        position: absolute;
-    }
-
-    .input_icon {
-        padding-left: 2rem;
-    }
-}

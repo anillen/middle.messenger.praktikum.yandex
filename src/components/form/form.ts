@@ -9,6 +9,7 @@ class FormProps {
   formHeader: FormHeader;
   formBody?: FormBody;
   formFooter?: FormFooter;
+  events?: object;
 }
 
 export default class Form extends Block {

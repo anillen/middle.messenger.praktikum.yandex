@@ -1,7 +1,6 @@
 import Block from "../../../utils/Block";
 import "./account.scss";
 import accountsTemplate from "./account.hbs";
-import { render } from "../../../utils/renderDOM";
 import BackSidebar from "../../components/back-sidebar/back-sidebar";
 import AccountFrom from "./components/account-form/account-form";
 import DataWrapper from "./components/account-form/components/data-wrapper/data-wrapper";
@@ -27,6 +26,7 @@ const switchPasswordHandler = () => {
 const submitFormHandler = (e: Event) => {
   e.preventDefault();
   console.log(GetFormData(e.target));
+
   accountForm.setProps({
     dataWrapper: new DataWrapper(true),
     actionsWrapper: new ActionsWrapper(
@@ -56,7 +56,3 @@ export default class Accounts extends Block {
     return this.compile(accountsTemplate, this.props);
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  render("main", new Accounts());
-});

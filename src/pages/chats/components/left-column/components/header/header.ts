@@ -4,6 +4,7 @@ import Link from "../../../../../../components/link/link";
 import Input from "../../../../../../components/input/input";
 import Image from "../../../../../../components/image/image";
 import "./header.scss";
+import SearchInput from "./search-input/search-input";
 
 export default class Header extends Block {
   constructor() {
@@ -13,14 +14,7 @@ export default class Header extends Block {
         text: "Профиль >",
         to: "../account/",
       }),
-      searchInput: new Input({
-        icon: new Image({
-          alt: "Логотип поиска",
-          class: "input__icon",
-          source: "/static/search.svg",
-        }),
-        class: "primary-input",
-      }),
+      searchInput: new SearchInput(),
     });
   }
   public render(): Node {

@@ -1,3 +1,9 @@
+import {
+  EmailRegexp,
+  LoginRegexp,
+  NameRegexp,
+  PhoneRegexp,
+} from "../../../../../../../constants/Regexps";
 import Block from "../../../../../../../utils/Block";
 import InputWrapper from "../input-wrapper/input-wrapper";
 import dataWrapperTemplate from "./data-wrapper.hbs";
@@ -12,23 +18,38 @@ export default class DataWrapper extends Block {
         name: "email",
         defaultValue: "pochta@yadnex.ru",
         isDisabled: isDisabled,
-        validationRegular: new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z]+.[a-zA-Z]+"),
+        checkValidate: (value: string) => {
+          return EmailRegexp.test(value);
+        },
+        validationErrorText: "Некорректный адрес электронной почты",
       }),
       loginInput: new InputWrapper({
         labelText: "Логин",
         name: "login",
         defaultValue: "ivanivanov",
+        checkValidate: (value: string) => {
+          return LoginRegexp.test(value);
+        },
+        validationErrorText: "Некорректный логин",
         isDisabled: isDisabled,
       }),
       firstNameInput: new InputWrapper({
         labelText: "Имя",
         name: "first_name",
         defaultValue: "Иван",
+        checkValidate: (value: string) => {
+          return NameRegexp.test(value);
+        },
+        validationErrorText: "Некорректное имя",
         isDisabled: isDisabled,
       }),
       secondNameInput: new InputWrapper({
         labelText: "Фамилия",
         name: "second_name",
+        checkValidate: (value: string) => {
+          return NameRegexp.test(value);
+        },
+        validationErrorText: "Некорректная фамилия",
         defaultValue: "Иванов",
         isDisabled: isDisabled,
       }),
@@ -41,7 +62,11 @@ export default class DataWrapper extends Block {
       phoneInput: new InputWrapper({
         labelText: "Телефон",
         name: "phone",
-        defaultValue: "+7 (909) 967 30 30",
+        checkValidate: (value: string) => {
+          return PhoneRegexp.test(value);
+        },
+        validationErrorText: "Некорректный номер телефона",
+        defaultValue: "+79261234567",
         isDisabled: isDisabled,
       }),
     });

@@ -1,10 +1,17 @@
 import "./login.scss";
-import { render } from "../../../utils/renderDOM";
 import LoginForm from "./components/login-form/login-form";
 import loginTemplate from "./login.hbs";
+import Block from "../../../utils/Block";
 
 const form = new LoginForm();
-
-document.addEventListener("DOMContentLoaded", () => {
-  render("main", form);
-});
+export default class Login extends Block {
+  constructor() {
+    super("div", {
+      attributes: { class: "container-center" },
+      loginForm: form,
+    });
+  }
+  public render(): Node {
+    return this.compile(loginTemplate, this.props);
+  }
+}

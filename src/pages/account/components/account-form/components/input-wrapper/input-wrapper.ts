@@ -9,38 +9,48 @@ class InputProps {
   defaultValue?: string;
   name: string;
   isDisabled?: boolean = false;
-  validationRegular?: RegExp;
+  checkValidate?: Function;
   validationErrorText?: string;
+  required?: boolean = false;
 }
 
-const validationHandler = (e: Event, validationRegular: RegExp | undefined) => {
-  if (e.target instanceof HTMLInputElement && validationRegular) {
-    if (!validationRegular.test(e.target.value)) {
-      e.target.className =
-        "profile-input-wrapper__input profile-input-wrapper__input_error";
+const validationHandler = (e: Event, inputWrapper: Block) => {
+  const { checkValidate } = inputWrapper.props;
+  if (!checkValidate) {
+    return;
+  }
+
+  if (e.target instanceof HTMLInputElement) {
+    if (!checkValidate(e.target.value)) {
+      inputWrapper.setProps({
+        attributes: { class: "row_error profile-input-wrapper" },
+      });
+      e.target.setCustomValidity(inputWrapper.props.validationErrorText);
     } else {
-      e.target.className = "profile-input-wrapper__input";
+      inputWrapper.setProps({
+        attributes: { class: "row_valid profile-input-wrapper" },
+      });
+      e.target.setCustomValidity("");
     }
   }
 };
 
 export default class InputWrapper extends Block {
-  validation = (e) => {
-    console.log(e);
-  };
-
   constructor(props: InputProps) {
     super("div", {
       attributes: { class: "row profile-input-wrapper" },
+      checkValidate: props.checkValidate,
+      validationErrorText: props.validationErrorText,
       input: new Input({
         disabled: props.isDisabled,
         name: props.name,
         value: props.defaultValue,
         type: props.type,
+        required: props.required,
         class: "profile-input-wrapper__input",
         events: {
-          blur: (e) => {
-            validationHandler(e, props.validationRegular);
+          blur: (e: Event) => {
+            validationHandler(e, this);
           },
         },
       }),
