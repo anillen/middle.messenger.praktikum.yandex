@@ -6,6 +6,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "strictNullChecks": true
   }
 }
