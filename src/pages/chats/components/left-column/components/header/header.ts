@@ -10,7 +10,7 @@ export default class Header extends Block {
       attributes: { class: "left-column__header" },
       profileLink: new Link({
         text: "Профиль >",
-        to: "../account/",
+        to: "/account",
       }),
       searchInput: new SearchInput(),
     });
