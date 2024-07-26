@@ -3,6 +3,7 @@ import HeaderContact from "./components/header-contact/header-contact";
 import Button from "../../../../../../components/button/button";
 import headerTemplate from "./header.hbs";
 import "./header.scss";
+import menuImage from "../../../../../../../static/menu.svg";
 
 class HeaderProperties {
   headerContact: HeaderContact;
@@ -16,7 +17,7 @@ export default class Header extends Block {
         class: "right-column__header",
       },
       menuButton: new Button({
-        image: "/static/menu.svg",
+        image: menuImage,
       }),
     });
   }

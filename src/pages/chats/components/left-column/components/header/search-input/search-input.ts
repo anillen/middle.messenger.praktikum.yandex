@@ -3,6 +3,7 @@ import Image from "../../../../../../../components/image/image";
 import Input from "../../../../../../../components/input/input";
 import searchInputTemplate from "./search-input.hbs";
 import "./search-input.scss";
+import searchIcon from "../../../../../../../../static/search.svg";
 
 export default class SearchInput extends Block {
   constructor() {
@@ -12,7 +13,7 @@ export default class SearchInput extends Block {
       },
       icon: new Image({
         alt: "Иконка поиска",
-        source: "/static/search.svg",
+        source: searchIcon,
         class: "input__icon",
       }),
       input: new Input({

@@ -5,6 +5,7 @@ import ChatListItem from "./components/chat-list/components/chat-list-item/chat-
 import Header from "./components/header/header";
 import leftColumTemplate from "./left-column.hbs";
 import "./left-column.scss";
+import avatarImage from "../../../../../static/circle.svg";
 
 export default class LeftColumn extends Block {
   constructor() {
@@ -16,7 +17,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "Андрей",
           contentText: "Изображение",
@@ -27,7 +28,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "Киноклуб",
           contentText: "стикер",
@@ -38,7 +39,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "Илья",
           contentText: "Друзья, у меня для вас особенный выпуск новостей!..",
@@ -49,7 +50,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "Вадим",
           contentText: "Круто!",
@@ -61,7 +62,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "тет-а-теты",
           contentText:
@@ -72,7 +73,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "1, 2, 3",
           contentText:
@@ -83,7 +84,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "Design Destroyer",
           contentText: "В 2008 году художник Jon Rafman  начал собирать...",
@@ -93,7 +94,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "Day.",
           contentText:
@@ -104,7 +105,7 @@ export default class LeftColumn extends Block {
           avatarImage: new Image({
             alt: "Автар пользователя",
             class: "item__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           contactName: "Стас Рогозин",
           contentText: "Можно или сегодня или завтра вечером.",

@@ -2,6 +2,7 @@ import "./back-sidebar.scss";
 import Block from "../../../utils/Block";
 import Button from "../button/button";
 import backSideBarTemplate from "./back-sidebar.hbs";
+import buttonIcon from "../../../static/arrow-left.svg";
 
 export default class BackSidebar extends Block {
   constructor() {
@@ -9,7 +10,7 @@ export default class BackSidebar extends Block {
       attributes: { class: "back-sidebar" },
       backButton: new Button({
         class: "button_primary button_circle",
-        image: "/static/arrow-left.svg",
+        image: buttonIcon,
       }),
     });
   }

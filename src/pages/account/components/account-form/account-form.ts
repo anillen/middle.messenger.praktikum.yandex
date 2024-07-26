@@ -3,6 +3,7 @@ import Block from "../../../../../utils/Block";
 import "./account-form.scss";
 import accountFormTemplate from "./account-form.hbs";
 import Image from "../../../../components/image/image";
+import avatar from "../../../../../static/image-icon.svg";
 
 class AccountFormProperties {
   dataWrapper: Block;
@@ -17,7 +18,7 @@ export default class AccountFrom extends Block {
       attributes: { class: "account-container__profile" },
       avatarImage: new Image({
         alt: "Аватар",
-        source: "/static/image-icon.svg",
+        source: avatar,
         class: "avatar__image",
       }),
       events: {

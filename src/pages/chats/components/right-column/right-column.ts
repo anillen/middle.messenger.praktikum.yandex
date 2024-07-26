@@ -7,6 +7,8 @@ import MessageList from "./components/message-list/message-list";
 import MessageListItem from "./components/message-list/components/message-list-item/message-list-item";
 import MessageActions from "./components/message-actions/message-actions";
 import "./right-column.scss";
+import avatarImage from "../../../../../static/circle.svg";
+import messageImage from "../../../../../static/message-image.jpg";
 
 export default class RightColumn extends Block {
   constructor() {
@@ -17,7 +19,7 @@ export default class RightColumn extends Block {
           imageContact: new Image({
             alt: "Аватар пользователя",
             class: "contact-wrapper__image",
-            source: "/static/circle.svg",
+            source: avatarImage,
           }),
           name: "Вадим",
         }),
@@ -39,7 +41,7 @@ export default class RightColumn extends Block {
           image: new Image({
             alt: "Изображение",
             class: "item__image",
-            source: "/static/message-image.jpg",
+            source: messageImage,
           }),
           date: "11:56",
         }),

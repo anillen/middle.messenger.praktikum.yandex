@@ -5,6 +5,8 @@ import messageActionsTemplate from "./message-actions.hbs";
 import "./message-actions.scss";
 import GetFormData from "../../../../../../../utils/GetFormData";
 import { MessageRegexp } from "../../../../../../../constants/Regexps";
+import clipImage from "../../../../../../../static/clip.svg";
+import sendButtonImage from "../../../../../../../static/arrow-right.svg";
 
 const inputValidation = (e: Event) => {
   if (e.target instanceof HTMLInputElement) {
@@ -40,11 +42,11 @@ export default class MessageActions extends Block {
       },
       clipButton: new Button({
         type: "button",
-        image: "/static/clip.svg",
+        image: clipImage,
       }),
       messageInput: messageInput,
       sendButton: new Button({
-        image: "/static/arrow-right.svg",
+        image: sendButtonImage,
         class: "button_primary button_circle",
       }),
       events: {
