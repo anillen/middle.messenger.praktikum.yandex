@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
+
 interface Listeners {
   [key: string]: Array<Function>;
 }
@@ -25,6 +27,7 @@ export default class EventBus {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   emit(event: string, ...args: any[]) {
     if (!this.listeners[event]) {
       throw new Error(`События ${event} не существует!`);

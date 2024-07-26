@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import Block from "../../../../../utils/Block";
 import "./account-form.scss";
 import accountFormTemplate from "./account-form.hbs";

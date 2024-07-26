@@ -1,7 +1,5 @@
 import Block from "../../../../../../../utils/Block";
-import Image from "../../../../../../components/image/image";
 import ChatListItem from "./components/chat-list-item/chat-list-item";
-import chatListTemplate from "./chat-list.hbs";
 import Handlebars from "handlebars";
 import "./chat-list.scss";
 

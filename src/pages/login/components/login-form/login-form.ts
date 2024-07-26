@@ -4,7 +4,6 @@ import LoginFormBody from "./components/form-body/form-body";
 import Button from "../../../../components/button/button";
 import Link from "../../../../components/link/link";
 import FormFooter from "../../../../components/form/components/footer/footer";
-import loginFormTemplate from "./login-form.hbs";
 import "./login-form.scss";
 
 import GetFormData from "../../../../../utils/GetFormData";

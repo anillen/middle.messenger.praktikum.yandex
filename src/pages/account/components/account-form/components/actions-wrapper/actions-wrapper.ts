@@ -3,6 +3,7 @@ import Button from "../../../../../../components/button/button";
 import actionsWrapperTemplate from "./actions-wrapper.hbs";
 
 export default class ActionsWrapper extends Block {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   constructor(switchDataHandler: Function, switchPasswordHandler: Function) {
     super("div", {
       attributes: { class: "card__actions-wrapper" },

@@ -3,7 +3,7 @@ import formBodyTemplate from "./body.hbs";
 import "./body.scss";
 
 export default class FormBody extends Block {
-  constructor(formBodyProps: any) {
+  constructor(formBodyProps: object) {
     super("div", { ...formBodyProps, attributes: { class: "form__body" } });
   }
   public render(): Node {

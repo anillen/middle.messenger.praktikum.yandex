@@ -1,5 +1,4 @@
 import FormBody from "../../../../../../components/form/components/body/body";
-import Block from "../../../../../../../utils/Block";
 import loginFormBodyTemplate from "./form-body.hbs";
 import "./form-body.scss";
 import FormInput from "../../../../../../components/form/components/input/input";

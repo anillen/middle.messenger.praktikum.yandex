@@ -5,7 +5,6 @@ import Link from "../../../../components/link/link";
 import FormFooter from "../../../../components/form/components/footer/footer";
 import RegisterFormBody from "./components/form-body/form-body";
 import "./register-form.scss";
-import registerFormTemplate from "./register-form.hbs";
 import GetFormData from "../../../../../utils/GetFormData";
 
 const submitFormHandler = (e: Event) => {

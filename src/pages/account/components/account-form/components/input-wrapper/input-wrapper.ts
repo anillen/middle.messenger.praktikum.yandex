@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import Block from "../../../../../../../utils/Block";
 import Input from "../../../../../../components/input/input";
 import inputTemplate from "./input-wrapper.hbs";

@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import EventBus from "./EventBus";
 import { v4 as makeUUID } from "uuid";
 
@@ -7,6 +10,7 @@ class MetaInfo {
 }
 
 class Properties {
+   
   [key: string]: any;
 }
 
@@ -134,8 +138,8 @@ export default class Block {
     this._element.innerHTML = "";
 
     this._element.appendChild(block);
-    
-    Object.keys(this.attributes).forEach((key) => {
+
+    Object.keys(this.attributes).forEach(key => {
       if (this.attributes[key]) {
         this._element.setAttribute(key, this.attributes[key]);
       }
@@ -183,6 +187,7 @@ export default class Block {
   }
 
   private _makeProxyProps(props: object): object {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props, {
@@ -213,7 +218,7 @@ export default class Block {
       return;
     }
 
-    Object.keys(events).forEach((eventName) => {
+    Object.keys(events).forEach(eventName => {
       this._element.addEventListener(eventName, events[eventName]);
     });
   }
@@ -224,7 +229,7 @@ export default class Block {
       return;
     }
 
-    Object.keys(events).forEach((eventName) => {
+    Object.keys(events).forEach(eventName => {
       this._element.removeEventListener(eventName, events[eventName]);
     });
   }

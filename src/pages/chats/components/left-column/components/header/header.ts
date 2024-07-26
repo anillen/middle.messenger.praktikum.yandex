@@ -1,8 +1,6 @@
 import Block from "../../../../../../../utils/Block";
 import templateHeader from "./header.hbs";
 import Link from "../../../../../../components/link/link";
-import Input from "../../../../../../components/input/input";
-import Image from "../../../../../../components/image/image";
 import "./header.scss";
 import SearchInput from "./search-input/search-input";
 
