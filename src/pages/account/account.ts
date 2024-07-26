@@ -1,41 +1,58 @@
-import Handlebars from "handlebars";
-
+import Block from "../../../utils/Block";
 import "./account.scss";
+import accountsTemplate from "./account.hbs";
+import BackSidebar from "../../components/back-sidebar/back-sidebar";
+import AccountFrom from "./components/account-form/account-form";
+import DataWrapper from "./components/account-form/components/data-wrapper/data-wrapper";
+import ActionsWrapper from "./components/account-form/components/actions-wrapper/actions-wrapper";
+import SaveActionWrapper from "./components/account-form/components/save-action-wrapper/save-action-wrapper";
+import GetFormData from "../../../utils/GetFormData";
+import SwitchPasswordWrapper from "./components/account-form/components/switch-password-wrapper/switch-password-wrapper";
 
-import { switchPasswordContainer } from "./components/switch-password-container/switch-password-container";
-import input from "./components/input/input.hbs";
-import button from "../../components/button/button.hbs";
-
-Handlebars.registerPartial("input", input);
-Handlebars.registerPartial("button", button);
-
-document.addEventListener("DOMContentLoaded", () => {
-  const switchPasswordButtons = document.getElementsByName(
-    "switch-password-button"
-  );
-  const switchDataButtons = document.getElementsByName("switch-data-button");
-
-  switchDataButtons[0].addEventListener("click", () => {
-    const inputs = document.getElementsByTagName("input");
-    for (let i = 0; i < inputs.length; i++) {
-      inputs[i].removeAttribute("disabled");
-    }
-    _saveMode();
+const switchDataHandler = () => {
+  accountForm.setProps({
+    actionsWrapper: new SaveActionWrapper(),
+    dataWrapper: new DataWrapper(false),
   });
+};
 
-  switchPasswordButtons[0].addEventListener("click", () => {
-    const dataWrapper = document.getElementById("data-wrapper");
-    dataWrapper!.innerHTML = Handlebars.compile(switchPasswordContainer)({});
-    _saveMode();
+const switchPasswordHandler = () => {
+  accountForm.setProps({
+    actionsWrapper: new SaveActionWrapper(),
+    dataWrapper: new SwitchPasswordWrapper(),
   });
-  
+};
+
+const submitFormHandler = (e: Event) => {
+  e.preventDefault();
+  console.log(GetFormData(e.target));
+
+  accountForm.setProps({
+    dataWrapper: new DataWrapper(true),
+    actionsWrapper: new ActionsWrapper(
+      switchDataHandler,
+      switchPasswordHandler
+    ),
+    submitFormHandler: submitFormHandler,
+  });
+};
+
+const accountForm = new AccountFrom({
+  dataWrapper: new DataWrapper(true),
+  actionsWrapper: new ActionsWrapper(switchDataHandler, switchPasswordHandler),
+  submitFormHandler: submitFormHandler,
 });
 
-function _saveMode() {
-  const actionsWrapper = document.getElementById("actions-wrapper");
-  actionsWrapper!.innerHTML = Handlebars.compile("{{>button}}")({
-    class: "button_primary",
-    text: "Сохранить",
-  });
-  actionsWrapper!.className += " card__actions-wrapper_center";
+export default class Accounts extends Block {
+  constructor() {
+    super("div", {
+      attributes: { class: "account-container" },
+      backSidebar: new BackSidebar(),
+      accountForm: accountForm,
+    });
+  }
+
+  public render(): Node {
+    return this.compile(accountsTemplate, this.props);
+  }
 }

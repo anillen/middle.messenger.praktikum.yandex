@@ -1,0 +1,44 @@
+@import "/main.scss";
+
+.row {
+    border-bottom: 1px solid $line-color;
+    padding: 0.4rem;
+}
+
+.row:last-child {
+    border: none;
+}
+
+.row_error {
+    border-bottom: 1px solid $danger-color;
+    padding: 0.4rem;
+}
+.row_valid{
+    border-bottom: 1px solid $accept-color;
+    padding: 0.4rem;
+}
+
+.profile-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .profile-input-wrapper__label {
+        font-weight: 600;
+    }
+
+    .profile-input-wrapper__input {
+        text-align: end;
+        color: black;
+    }
+
+    .profile-input-wrapper__input:disabled {
+        color: $second-color;
+    }
+
+    .error-message {
+        display: none;
+        color: $danger-color;
+    }
+}

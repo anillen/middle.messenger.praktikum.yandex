@@ -1,0 +1,25 @@
+@import "/main.scss";
+
+.right-column__header {
+    background-color: $header-background-color;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+
+    .header__contact-wrapper {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        overflow: hidden;
+
+        .contact-wrapper__image {
+            max-width: 3rem;
+            max-height: 3rem;
+        }
+
+        .contact-wrapper__contact-name {
+            font-weight: bold;
+            color: black;
+        }
+    }
+}
