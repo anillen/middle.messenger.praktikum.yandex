@@ -15,7 +15,7 @@ export default class ChatList extends Block {
   public render(): Node {
     let template: string = "";
 
-    this.props.chats.forEach((chat, index) => {
+    this.props.chats.forEach((_chat: Block, index: number) => {
       template += `{{{chats${index}}}} `;
     });
 

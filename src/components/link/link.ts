@@ -2,7 +2,7 @@ import Block from "../../../utils/Block";
 import linkTemplate from "./link.hbs";
 import "./link.scss";
 
-class LinkProperties {
+interface LinkProperties {
   class?: string;
   to: string;
   text: string;

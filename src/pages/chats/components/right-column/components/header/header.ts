@@ -5,7 +5,7 @@ import headerTemplate from "./header.hbs";
 import "./header.scss";
 import menuImage from "../../../../../../../static/menu.svg";
 
-class HeaderProperties {
+interface HeaderProperties {
   headerContact: HeaderContact;
 }
 

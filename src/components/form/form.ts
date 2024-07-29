@@ -5,7 +5,7 @@ import FormHeader from "./components/header/header";
 import formTemplate from "./form.hbs";
 import "./form.scss";
 
-class FormProps {
+interface FormProps {
   formHeader: FormHeader;
   formBody?: FormBody;
   formFooter?: FormFooter;

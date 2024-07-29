@@ -13,7 +13,7 @@ export default class MessageList extends Block {
   public render(): Node {
     let template: string = "";
     template += `<p class="message-list__date">19 июля</p>`;
-    this.props.messages.forEach((chat, index) => {
+    this.props.messages.forEach((_chat: Block, index: number) => {
       template += `{{{messages${index}}}} `;
     });
 

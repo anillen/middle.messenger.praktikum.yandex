@@ -2,7 +2,7 @@ import Block from "../../../utils/Block";
 import templateImage from "./image.hbs";
 import "./image.scss";
 
-class ImageProperties {
+interface ImageProperties {
   source: string;
   alt: string;
   class?: string;

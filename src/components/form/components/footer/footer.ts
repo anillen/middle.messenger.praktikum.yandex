@@ -2,7 +2,7 @@ import Block from "../../../../../utils/Block";
 import formFooterTemplate from "./footer.hbs";
 import "./footer.scss";
 
-class FormFooterProperties {
+interface FormFooterProperties {
   primaryButton: Block;
   secondButton: Block;
 }

@@ -2,7 +2,7 @@ import Block from "../../../../../../../../../utils/Block";
 import Image from "../../../../../../../../components/image/image";
 import headerContactTemplate from "./header-contact.hbs";
 
-class HeaderContactProperties {
+interface HeaderContactProperties {
   imageContact: Image;
   name: string;
 }
