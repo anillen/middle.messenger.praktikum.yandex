@@ -46,14 +46,14 @@ export default class Block {
       tagName,
       props,
     };
-    this._element = new HTMLElement();
 
     this._id = makeUUID();
-
     this.props = this._makeProxyProps({ ...props, __id: this._id });
     this.children = <Childrens>this._makeProxyProps(children);
     this.attributes = <Attributes>this._makeProxyProps(attributes);
-
+    this._element = this._element = this._createDocumentElement(
+      this._meta.tagName
+    );
     const eventBus = new EventBus();
     this.eventBus = eventBus;
     this._registerEvents(eventBus);
