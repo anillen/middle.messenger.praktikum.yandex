@@ -51,7 +51,7 @@ export default class Block {
     this.props = this._makeProxyProps({ ...props, __id: this._id });
     this.children = <Childrens>this._makeProxyProps(children);
     this.attributes = <Attributes>this._makeProxyProps(attributes);
-    this._element = this._element = this._createDocumentElement(
+    this._element = this._createDocumentElement(
       this._meta.tagName
     );
     const eventBus = new EventBus();
