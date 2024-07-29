@@ -5,18 +5,25 @@ const METHODS = {
   DELETE: "DELETE",
 };
 
-function queryStringify(data: object) {
+interface Body {
+  [key: string]: object;
+}
+interface Header {
+  [key: string]: string;
+}
+
+function queryStringify(data: Body) {
   const keys = Object.keys(data);
   return keys.reduce((result, key, index) => {
     return `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`;
   }, "?");
 }
 
-class FetchServiceOptions {
-  headers?: object;
+interface FetchServiceOptions {
+  headers?: Header;
   method: string;
-  data?: Document;
-  timeout?: number = 5000;
+  data?: Body;
+  timeout?: number;
 }
 
 export default class FetchService {
@@ -58,7 +65,7 @@ export default class FetchService {
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
-      xhr.send(data);
+      xhr.send();
     });
   };
 }

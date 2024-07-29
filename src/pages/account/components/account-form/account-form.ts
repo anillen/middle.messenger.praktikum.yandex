@@ -5,7 +5,7 @@ import accountFormTemplate from "./account-form.hbs";
 import Image from "../../../../components/image/image";
 import avatar from "../../../../../static/image-icon.svg";
 
-class AccountFormProperties {
+interface AccountFormProperties {
   dataWrapper: Block;
   actionsWrapper: Block;
   submitFormHandler: Function;

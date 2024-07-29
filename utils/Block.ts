@@ -4,14 +4,22 @@
 import EventBus from "./EventBus";
 import { v4 as makeUUID } from "uuid";
 
-class MetaInfo {
+interface MetaInfo {
   tagName: string;
   props: object;
 }
 
-class Properties {
-   
+interface Properties {
   [key: string]: any;
+}
+interface Attributes {
+  [key: string]: string;
+}
+interface Childrens {
+  [key: string]: Block;
+}
+interface Events {
+  [key: string]: Function;
 }
 
 export default class Block {
@@ -24,8 +32,8 @@ export default class Block {
 
   public props: Properties;
   public eventBus: EventBus;
-  public children: object;
-  public attributes: object;
+  public children: Childrens;
+  public attributes: Attributes;
 
   private _element: HTMLElement;
   private _meta: MetaInfo;
@@ -38,14 +46,13 @@ export default class Block {
       tagName,
       props,
     };
+    this._element = new HTMLElement();
 
     this._id = makeUUID();
 
-    this.props = this.props?.settings.withInternalID
-      ? this._makeProxyProps({ ...props, __id: this._id })
-      : this._makeProxyProps(props);
-    this.children = this._makeProxyProps(children);
-    this.attributes = this._makeProxyProps(attributes);
+    this.props = this._makeProxyProps({ ...props, __id: this._id });
+    this.children = <Childrens>this._makeProxyProps(children);
+    this.attributes = <Attributes>this._makeProxyProps(attributes);
 
     const eventBus = new EventBus();
     this.eventBus = eventBus;
@@ -59,13 +66,13 @@ export default class Block {
     this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  public componentDidMount(oldProps?: object): void {}
+  public componentDidMount(_oldProps?: object): void {}
 
   public dispatchComponentDidMount(): void {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM);
   }
 
-  public componentDidUpdate(oldProps: object, newProps: object): boolean {
+  public componentDidUpdate(_oldProps: object, _newProps: object): boolean {
     return true;
   }
 
@@ -80,7 +87,7 @@ export default class Block {
     Object.assign(this.attributes, attributes);
   };
 
-  public compile(template: Function, props: object): Node {
+  public compile(template: Function, props: Properties): Node {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {
@@ -157,9 +164,9 @@ export default class Block {
   }
 
   private _parseProps(propsAndChildren: object): any {
-    const children: object = {};
-    const props: object = {};
-    let attributes: object = {};
+    const children: Childrens = {};
+    const props: Properties = {};
+    let attributes: Attributes = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (key == "attributes") attributes = value;
@@ -186,16 +193,16 @@ export default class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  private _makeProxyProps(props: object): object {
+  private _makeProxyProps(props: Properties): object {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
+      get(target, prop: string) {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target, prop: string, value: string) {
         target[prop] = value;
         self.eventBus.emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
         return true;
@@ -212,14 +219,15 @@ export default class Block {
   }
 
   private _addEvents(): void {
-    const events: object = this.props.events;
+    const events: Events = this.props.events;
 
     if (!events) {
       return;
     }
 
     Object.keys(events).forEach(eventName => {
-      this._element.addEventListener(eventName, events[eventName]);
+      let callback = events[eventName] as EventListener;
+      this._element.addEventListener(eventName, callback);
     });
   }
 

@@ -4,15 +4,15 @@ import Input from "../../../../../../components/input/input";
 import inputTemplate from "./input-wrapper.hbs";
 import "./input-wrapper.scss";
 
-class InputProps {
+interface InputProps {
   labelText: string;
-  type?: string = "text";
+  type?: string;
   defaultValue?: string;
   name: string;
-  isDisabled?: boolean = false;
+  isDisabled?: boolean;
   checkValidate?: Function;
   validationErrorText?: string;
-  required?: boolean = false;
+  required?: boolean;
 }
 
 const validationHandler = (e: Event, inputWrapper: Block) => {
@@ -43,11 +43,11 @@ export default class InputWrapper extends Block {
       checkValidate: props.checkValidate,
       validationErrorText: props.validationErrorText,
       input: new Input({
-        disabled: props.isDisabled,
+        disabled: props.isDisabled ?? false,
         name: props.name,
         value: props.defaultValue,
-        type: props.type,
-        required: props.required,
+        type: props.type ?? "text",
+        required: props.required ?? false,
         class: "profile-input-wrapper__input",
         events: {
           blur: (e: Event) => {
