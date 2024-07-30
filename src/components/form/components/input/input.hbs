@@ -2,3 +2,6 @@
   <label class="controls__label" for="{{name}}">{{labelText}}</label>
 {{/if}}
 {{{input}}}
+{{#if isError}}
+  <span class="validation-error">{{validateErrorMessage}}</span>
+{{/if}}

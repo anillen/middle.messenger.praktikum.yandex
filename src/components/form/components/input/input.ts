@@ -12,6 +12,7 @@ class FormInputProps {
   type?: string = "text";
   checkValidate?: Function;
   validateErrorMessage?: string;
+  isError?: boolean = false;
 }
 
 const inputBlurHandler = (e: Event, inputWrapper: Block) => {
@@ -23,12 +24,14 @@ const inputBlurHandler = (e: Event, inputWrapper: Block) => {
     if (!inputWrapper.props.checkValidate(e.target.value)) {
       inputWrapper.setProps({
         attributes: { class: "form__controls form_controls_error" },
+        isError: true,
       });
 
       e.target.setCustomValidity(inputWrapper.props.validateErrorMessage);
     } else {
       inputWrapper.setProps({
         attributes: { class: "form__controls form_controls_valid" },
+        isError: false,
       });
 
       e.target.setCustomValidity("");

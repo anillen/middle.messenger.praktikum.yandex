@@ -7,6 +7,7 @@ class ButtonProperties {
   name?: string;
   class?: string;
   image?: string;
+  altImage?: string;
   text?: string;
   events?: object;
 }

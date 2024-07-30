@@ -9,3 +9,8 @@
 .controls__input::placeholder {
     color: #FF9966;
 }
+
+.validation-error {
+    color: $danger-color;
+    font-size: 10px;
+}

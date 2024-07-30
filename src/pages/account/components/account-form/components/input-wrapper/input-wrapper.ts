@@ -13,6 +13,7 @@ interface InputProps {
   checkValidate?: Function;
   validationErrorText?: string;
   required?: boolean;
+  isError?: boolean;
 }
 
 const validationHandler = (e: Event, inputWrapper: Block) => {
@@ -24,12 +25,14 @@ const validationHandler = (e: Event, inputWrapper: Block) => {
   if (e.target instanceof HTMLInputElement) {
     if (!checkValidate(e.target.value)) {
       inputWrapper.setProps({
-        attributes: { class: "row_error profile-input-wrapper" },
+        attributes: { class: "row_error" },
+        isError: true,
       });
       e.target.setCustomValidity(inputWrapper.props.validationErrorText);
     } else {
       inputWrapper.setProps({
         attributes: { class: "row_valid profile-input-wrapper" },
+        isError: false,
       });
       e.target.setCustomValidity("");
     }
