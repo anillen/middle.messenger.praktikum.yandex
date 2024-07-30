@@ -26,18 +26,23 @@ interface FetchServiceOptions {
   timeout?: number;
 }
 
+type HTTPMethod = (
+  url: string,
+  options?: FetchServiceOptions
+) => Promise<unknown>;
+
 export default class FetchService {
-  get = (url: string, options: FetchServiceOptions) => {
+  get: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.GET });
   };
 
-  put = (url: string, options: FetchServiceOptions) => {
+  put: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.PUT });
   };
-  post = (url: string, options: FetchServiceOptions) => {
+  post: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.POST });
   };
-  delete = (url: string, options: FetchServiceOptions) => {
+  delete: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.DELETE });
   };
 
