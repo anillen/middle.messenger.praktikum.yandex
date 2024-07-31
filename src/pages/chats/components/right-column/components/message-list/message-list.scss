@@ -1,0 +1,6 @@
+.right-column__message-list {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    max-height: 90vh;
+}

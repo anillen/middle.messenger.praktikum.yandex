@@ -1,0 +1,10 @@
+@import "/main.scss";
+
+.right-column__message-actions {
+    background-color: $footer-background-color;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    padding: 0 2rem;
+}

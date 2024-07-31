@@ -1,0 +1,73 @@
+@import "/main.scss";
+
+.chat-list__item {
+    padding: 0.5rem;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    column-gap: 1rem;
+    border-bottom: 1px solid $line-color;
+    transition: all 0.1s linear;
+
+    .item__image {
+        max-width: 5rem;
+        max-height: 5rem;
+    }
+
+    .item__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .content__title {
+            font-weight: bold;
+            color: black;
+        }
+
+        .content__message {
+            display: flex;
+            gap: 0.2rem;
+
+            .message__prev {
+                color: black;
+                font-weight: bold;
+            }
+
+            .message__text {
+                color: $nonfocus-color;
+                line-height: 1.2em;
+                max-height: 2.4em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+        }
+    }
+
+    .item__statuses {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0.2rem 0;
+        align-items: flex-end;
+
+        .statuses__unread-count {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $primary-color;
+            color: $white-color;
+            border-radius: 50%;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+.chat-list__item_active {
+    background-color: $focus-color;
+}
+
+.chat-list__item:hover {
+    background-color: $focus-color;
+}

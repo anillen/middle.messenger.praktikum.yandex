@@ -1,3 +1,5 @@
+@import "/main.scss";
+
 .button {
     display: flex;
     align-items: center;
@@ -8,14 +10,16 @@
     background-color: transparent;
     cursor: pointer;
     font-size: 12px;
+    font-weight: 600;
     transition: all 0.2s linear;
     text-decoration: none;
 }
 
-.button_primary-color{
+.button_primary-color {
     color: $primary-color;
 }
-.button_red-color{
+
+.button_red-color {
     color: $danger-color;
 }
 
@@ -26,7 +30,7 @@
     background-color: $primary-color;
 }
 
-.button_circle{
+.button_circle {
     padding: 0;
     border-radius: 50%;
     width: 2.3rem;

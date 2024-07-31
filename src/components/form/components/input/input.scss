@@ -1,0 +1,16 @@
+@import "/main.scss";
+
+.controls__input {
+    border-bottom: 1px solid $line-color;
+    padding-bottom: 0.3rem;
+    width: 100%;
+}
+
+.controls__input::placeholder {
+    color: #FF9966;
+}
+
+.validation-error {
+    color: $danger-color;
+    font-size: 10px;
+}

@@ -1,0 +1,9 @@
+@import "/main.scss";
+
+.navbar-link {
+    font-size: 18px;
+}
+
+.navbar-link:hover {
+    color: $focus-color;
+}

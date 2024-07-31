@@ -1,0 +1,35 @@
+@import "/main.scss";
+
+.form__body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: $white-color;
+    min-height: 10rem;
+
+    .form__controls {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .controls__label {
+            font-size: 10px;
+            color: #999999;
+        }
+    }
+
+    .form_controls_error {
+        input {
+            color: $danger-color;
+        }
+    }
+
+    .form_controls_valid {
+        input {
+            color: $accept-color;
+        }
+    }
+}
