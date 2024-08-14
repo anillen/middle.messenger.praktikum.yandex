@@ -1,16 +1,20 @@
 import Form from "../../../../components/form/form";
 import FormHeader from "../../../../components/form/components/header/header";
 import Button from "../../../../components/button/button";
-import Link from "../../../../components/link/link";
 import FormFooter from "../../../../components/form/components/footer/footer";
 import RegisterFormBody from "./components/form-body/form-body";
 import "./register-form.scss";
 import GetFormData from "../../../../../utils/GetFormData";
+import Router from "../../../../../utils/Router";
+
+const router = new Router("main");
 
 const submitFormHandler = (e: Event) => {
   e.preventDefault();
   console.log(GetFormData(e.target));
+  router.go("/messenger");
 };
+
 export default class RegisterForm extends Form {
   constructor() {
     super({
@@ -22,10 +26,12 @@ export default class RegisterForm extends Form {
           type: "submit",
           class: "button_primary",
         }),
-        secondButton: new Link({
+        secondButton: new Button({
           text: "Войти",
           class: "link_no-decoration",
-          to: "/login",
+          events: {
+            click: () => router.go("/"),
+          },
         }),
       }),
       events: {

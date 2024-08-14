@@ -1,6 +1,9 @@
 import Block from "../../../../../../../utils/Block";
+import Router from "../../../../../../../utils/Router";
 import Button from "../../../../../../components/button/button";
 import actionsWrapperTemplate from "./actions-wrapper.hbs";
+
+const router = new Router("main");
 
 export default class ActionsWrapper extends Block {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -27,6 +30,9 @@ export default class ActionsWrapper extends Block {
         class: "button_red-color",
         text: "Выйти",
         type: "button",
+        events: {
+          click: () => router.go("/"),
+        },
       }),
     });
   }

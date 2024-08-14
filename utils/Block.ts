@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import EventBus from "./EventBus";
 import { v4 as makeUUID } from "uuid";
 
@@ -51,9 +48,7 @@ export default class Block {
     this.props = this._makeProxyProps({ ...props, __id: this._id });
     this.children = <Childrens>this._makeProxyProps(children);
     this.attributes = <Attributes>this._makeProxyProps(attributes);
-    this._element = this._createDocumentElement(
-      this._meta.tagName
-    );
+    this._element = this._createDocumentElement(this._meta.tagName);
     const eventBus = new EventBus();
     this.eventBus = eventBus;
     this._registerEvents(eventBus);
@@ -119,8 +114,8 @@ export default class Block {
     return this.element;
   }
 
-  public show(): void {
-    this.getContent().style.display = "block";
+  public show(displaySelector: string = "block"): void {
+    this.getContent().style.display = displaySelector;
   }
 
   public hide(): void {
