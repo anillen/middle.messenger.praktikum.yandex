@@ -4,6 +4,7 @@ import chatListItemTemplate from "./chat-list-item.hbs";
 import "./chat-list-item.scss";
 
 interface ChatListItemProperties {
+  id: number;
   avatarImage: Image;
   isActive?: boolean;
   contactName: string;
@@ -11,17 +12,25 @@ interface ChatListItemProperties {
   contentText: string;
   date: string;
   unreadCount?: number;
+  events: any;
 }
 
 export default class ChatListItem extends Block {
+  setIsActive(isActive: boolean) {
+    this.setProps({
+      ...this.props,
+      attributes: {
+        class: `chat-list__item ${isActive && "chat-list__item_active"}`,
+      },
+      isActive: isActive,
+    });
+  }
   constructor(chatListItemProps: ChatListItemProperties) {
     super("li", {
       ...chatListItemProps,
       isMyMessage: chatListItemProps.isMyMessage ?? false,
       attributes: {
-        class: `chat-list__item ${
-          chatListItemProps?.isActive ? "chat-list__item_active" : ""
-        }`,
+        class: "chat-list__item",
       },
     });
   }

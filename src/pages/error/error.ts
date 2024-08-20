@@ -4,7 +4,10 @@ import Link from "../../components/link/link";
 import errorPageTemplate from "./error.hbs";
 
 export default class ErrorPage extends Block {
-  constructor(statusCode: number) {
+  constructor() {
+    let splitArray = window.location.pathname.split("/");
+    const statusCode = Number(splitArray[splitArray.length-1]);
+
     let title = "Ошибка, над которой мы уже работаем :)";
     switch (statusCode) {
       case 404:
@@ -14,7 +17,7 @@ export default class ErrorPage extends Block {
       attributes: { class: "container-center" },
       statusCode: statusCode,
       title: title,
-      link: new Link({ text: "Назад к чатам", to: "/", class: "link_primary error-link" }),
+      link: new Link({ text: "Назад к чатам", to: "/messenger", class: "link_primary error-link" }),
     });
   }
   public render(): Node {

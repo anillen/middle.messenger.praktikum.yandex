@@ -1,16 +1,21 @@
 import Block from "../../../../../../../utils/Block";
 import templateHeader from "./header.hbs";
-import Link from "../../../../../../components/link/link";
 import "./header.scss";
 import SearchInput from "./search-input/search-input";
+import Router from "../../../../../../../utils/Router";
+import Button from "../../../../../../components/button/button";
+
+const router = new Router("main");
 
 export default class Header extends Block {
   constructor() {
     super("div", {
       attributes: { class: "left-column__header" },
-      profileLink: new Link({
+      profileLink: new Button({
         text: "Профиль >",
-        to: "/account",
+        events: {
+          click: () => router.go("/settings"),
+        },
       }),
       searchInput: new SearchInput(),
     });
