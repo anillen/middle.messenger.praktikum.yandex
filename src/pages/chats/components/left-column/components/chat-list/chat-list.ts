@@ -5,6 +5,7 @@ import "./chat-list.scss";
 import ChatService from "../../../../../../../services/ChatService/ChatService";
 import Image from "../../../../../../components/image/image";
 import ChatStore from "../../../../../../../store/ChatStore";
+import circleImage from "../../../../../../../static/circle.svg";
 
 export default class ChatList extends Block {
   constructor() {
@@ -16,10 +17,10 @@ export default class ChatList extends Block {
             return new ChatListItem({
               id: item.id,
               avatarImage: new Image({
-                alt: item.avatar ?? "/static/circle.svg",
+                alt: item.avatar ?? circleImage,
                 source: item.avatar
                   ? `https://ya-praktikum.tech/api/v2/resources/${item.avatar}`
-                  : "/static/circle.svg",
+                  : circleImage,
                 class: "item__image",
               }),
               contactName: item.title,
