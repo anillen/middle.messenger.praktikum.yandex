@@ -3,10 +3,13 @@ import { render } from "./renderDOM";
 
 interface Properties {
   rootQuery: string;
+  isPrivate: boolean;
   [key: string]: any;
 }
 
 export default class Route {
+  public isPrivate: boolean;
+
   private _pathname: string;
   private _blockClass: any;
   private _block: Block | null;
@@ -19,6 +22,7 @@ export default class Route {
     this._block = null;
     this._props = props;
     this._root = null;
+    this.isPrivate = props.isPrivate;
   }
 
   navigate(pathname: string) {

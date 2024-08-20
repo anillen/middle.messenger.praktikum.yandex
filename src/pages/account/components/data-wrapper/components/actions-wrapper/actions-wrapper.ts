@@ -1,3 +1,4 @@
+import AuthService from "../../../../../../../services/AuthService/AuthService";
 import Block from "../../../../../../../utils/Block";
 import Router from "../../../../../../../utils/Router";
 import Button from "../../../../../../components/button/button";
@@ -31,7 +32,10 @@ export default class ActionsWrapper extends Block {
         text: "Выйти",
         type: "button",
         events: {
-          click: () => router.go("/"),
+          click: () => {
+            AuthService.Logout();
+            router.go("/");
+          },
         },
       }),
     });

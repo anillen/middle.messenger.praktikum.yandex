@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   router
     .use("/", Login)
     .use("/sign-up", Registration)
-    .use("/settings", Accounts)
-    .use("/messenger", Chats)
+    .use("/settings", Accounts, true)
+    .use("/messenger", Chats, true)
     .use("/error/404", ErrorPage)
     .use("/error/500", ErrorPage)
     .start();

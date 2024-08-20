@@ -129,13 +129,11 @@ export default class Block {
     if (!response) {
       return;
     }
-
     this._render();
   }
 
   private _render(): void {
     const block = this.render();
-
     this._removeEvents();
     this._element.innerHTML = "";
 
@@ -146,8 +144,11 @@ export default class Block {
         this._element.setAttribute(key, this.attributes[key]);
       }
     });
-
-    this._addEvents();
+    if (this.props.eventSelector) {
+      this._addEvents(this.props.eventSelector);
+    } else {
+      this._addEvents();
+    }
   }
 
   private _createDocumentElement(tagName: string): HTMLElement {
@@ -213,7 +214,7 @@ export default class Block {
     this._element = this._createDocumentElement(tagName);
   }
 
-  private _addEvents(): void {
+  private _addEvents(selector: string | null = null): void {
     const events: Events = this.props.events;
 
     if (!events) {
@@ -222,7 +223,12 @@ export default class Block {
 
     Object.keys(events).forEach(eventName => {
       let callback = events[eventName] as EventListener;
-      this._element.addEventListener(eventName, callback);
+      if (selector == null) {
+        this._element.addEventListener(eventName, callback);
+      } else {
+        const element = this._element.querySelector(selector);
+        element?.addEventListener(eventName, callback);
+      }
     });
   }
 

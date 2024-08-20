@@ -1,3 +1,5 @@
+import { queryString } from "../../utils/QueryString";
+
 const METHODS = {
   GET: "GET",
   PUT: "PUT",
@@ -5,24 +7,15 @@ const METHODS = {
   DELETE: "DELETE",
 };
 
-interface Body {
-  [key: string]: object;
-}
 interface Header {
   [key: string]: string;
-}
-
-function queryStringify(data: Body) {
-  const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`;
-  }, "?");
 }
 
 interface FetchServiceOptions {
   headers?: Header;
   method: string;
-  data?: Body;
+  data?: any;
+  formData?: FormData;
   timeout?: number;
 }
 
@@ -48,12 +41,19 @@ export default class FetchService {
 
   request = (url: string, options: FetchServiceOptions) => {
     return new Promise((resolve, reject) => {
-      const { headers = {}, method, data } = options;
+      const { headers = {}, method, data, formData } = options;
+
+      if (!formData) {
+        headers["content-type"] = "application/json";
+      }
+
+      headers["Access-Control-Allow-Origin"] = "*";
 
       const xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
 
-      if (method == METHODS.GET && data) {
-        xhr.open(method, `${url}${queryStringify(data)}`);
+      if (method == "GET" && data) {
+        xhr.open(method, `${url}?${queryString(data)}`);
       } else {
         xhr.open(method, url);
       }
@@ -65,12 +65,17 @@ export default class FetchService {
       xhr.onload = () => {
         resolve(xhr);
       };
+
       xhr.timeout = options.timeout ?? 5000;
       xhr.onabort = reject;
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
-      xhr.send();
+      if (formData != null) {
+        xhr.send(formData);
+        return;
+      }
+      xhr.send(JSON.stringify(data));
     });
   };
 }

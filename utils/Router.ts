@@ -1,3 +1,4 @@
+import AuthService from "../services/AuthService/AuthService";
 import Route from "./Route";
 
 class Router {
@@ -21,13 +22,16 @@ class Router {
     Router.__instance = this;
   }
 
-  public use(path: string, block: any) {
-    const route = new Route(path, block, { rootQuery: this._rootQuery });
+  public use(path: string, block: any, isPrivate: boolean = false) {
+    const route = new Route(path, block, {
+      rootQuery: this._rootQuery,
+      isPrivate: isPrivate,
+    });
 
     this.routes.push(route);
     return this;
   }
-  
+
   public start() {
     window.onpopstate = ((event: Event) => {
       if (event.currentTarget instanceof Window) {
@@ -44,7 +48,10 @@ class Router {
       this.go("/error/404");
       return;
     }
-
+    if (route.isPrivate && !AuthService.isAuthenticate) {
+      this.go("/");
+      return;
+    }
     if (this._currentRoute) {
       this._currentRoute.leave();
     }

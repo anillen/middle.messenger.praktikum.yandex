@@ -6,13 +6,19 @@ import RegisterFormBody from "./components/form-body/form-body";
 import "./register-form.scss";
 import GetFormData from "../../../../../utils/GetFormData";
 import Router from "../../../../../utils/Router";
+import AuthService from "../../../../../services/AuthService/AuthService";
+import SignUpModel from "../../../../../services/AuthService/models/SignUpModel";
 
 const router = new Router("main");
 
 const submitFormHandler = (e: Event) => {
   e.preventDefault();
-  console.log(GetFormData(e.target));
-  router.go("/messenger");
+  const formData = GetFormData<SignUpModel>(e.target);
+  AuthService.SignUp(formData).then(result => {
+    if (result) {
+      router.go("/messenger");
+    }
+  });
 };
 
 export default class RegisterForm extends Form {

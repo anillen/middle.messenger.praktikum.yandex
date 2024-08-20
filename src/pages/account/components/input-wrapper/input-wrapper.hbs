@@ -1,0 +1,20 @@
+<div class="profile-input-wrapper">
+  <label class="profile-input-wrapper__label">{{labelText}}</label>
+  <input
+    class="profile-input-wrapper__input"
+    value="{{defaultValue}}"
+    name="{{name}}"
+    {{#if type}}
+    type="{{type}}"
+    {{/if}}
+    {{#if isDisabled}}
+    disabled
+    {{/if}}
+    {{#if isRequired}}
+    required
+    {{/if}}
+  />
+</div>
+{{#if isError}}
+  <span class="validation-error">{{validationErrorText}}</span>
+{{/if}}

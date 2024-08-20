@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import Block from "../../../../../../../utils/Block";
-import Input from "../../../../../../components/input/input";
+
+import Block from "../../../../../utils/Block";
 import inputTemplate from "./input-wrapper.hbs";
 import "./input-wrapper.scss";
 
@@ -12,7 +12,7 @@ interface InputProps {
   isDisabled?: boolean;
   checkValidate?: Function;
   validationErrorText?: string;
-  required?: boolean;
+  isRequired?: boolean;
   isError?: boolean;
 }
 
@@ -27,12 +27,14 @@ const validationHandler = (e: Event, inputWrapper: Block) => {
       inputWrapper.setProps({
         attributes: { class: "row_error" },
         isError: true,
+        defaultValue: e.target.value,
       });
       e.target.setCustomValidity(inputWrapper.props.validationErrorText);
     } else {
       inputWrapper.setProps({
         attributes: { class: "row_valid profile-input-wrapper" },
         isError: false,
+        defaultValue: e.target.value,
       });
       e.target.setCustomValidity("");
     }
@@ -42,23 +44,21 @@ const validationHandler = (e: Event, inputWrapper: Block) => {
 export default class InputWrapper extends Block {
   constructor(props: InputProps) {
     super("div", {
-      attributes: { class: "row profile-input-wrapper" },
-      checkValidate: props.checkValidate,
-      validationErrorText: props.validationErrorText,
-      input: new Input({
-        disabled: props.isDisabled ?? false,
-        name: props.name,
-        value: props.defaultValue,
-        type: props.type ?? "text",
-        required: props.required ?? false,
-        class: "profile-input-wrapper__input",
-        events: {
-          blur: (e: Event) => {
-            validationHandler(e, this);
-          },
-        },
-      }),
+      defaultValue: props.defaultValue,
+      isDisabled: props.isDisabled,
+      isRequired: props.isRequired,
       labelText: props.labelText,
+      checkValidate: props.checkValidate,
+      name: props.name,
+      type: props.type,
+      validationErrorText: props.validationErrorText,
+      attributes: { class: "row profile-input-wrapper" },
+      eventSelector: "input",
+      events: {
+        blur: (e: Event) => {
+          validationHandler(e, this);
+        },
+      },
     });
   }
 
