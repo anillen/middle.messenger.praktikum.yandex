@@ -5,7 +5,6 @@ import BackSidebar from "../../components/back-sidebar/back-sidebar";
 import DataWrapper from "./components/data-wrapper/data-wrapper";
 import ChangeAvatarModal from "./components/data-wrapper/components/change-avatar-modal/change-avatar-modal";
 
-
 const showAvatarModal = () => {
   avatarModal.showModal();
 };

@@ -9,9 +9,10 @@ import MessageActions from "./components/message-actions/message-actions";
 import "./right-column.scss";
 import avatarImage from "../../../../../static/circle.svg";
 import messageImage from "../../../../../static/message-image.jpg";
+import Modal from "../modal/modal";
 
 export default class RightColumn extends Block {
-  constructor() {
+  constructor(modal: Modal) {
     super("div", {
       attributes: { class: "chats-grid__right-column" },
       header: new Header({
@@ -23,6 +24,7 @@ export default class RightColumn extends Block {
           }),
           name: "Вадим",
         }),
+        modal: modal,
       }),
       messageList: new MessageList([
         new MessageListItem({

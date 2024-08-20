@@ -40,3 +40,26 @@
 .button_primary:hover {
     background-color: $second-color;
 }
+
+.button_menu {
+    color: black;
+    font-size: 16px;
+    display: flex;
+    width: 100%;
+    padding: .5rem 2rem;
+    align-items: center;
+    justify-content: left;
+    gap:0.5rem;
+
+    img {
+        color: $primary-color;
+    }
+}
+
+.button_menu:hover {
+    color: $focus-color;
+}
+
+.button_menu:active {
+    color: $primary-color;
+}

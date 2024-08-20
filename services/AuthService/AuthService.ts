@@ -11,7 +11,6 @@ class AuthService {
     this.isAuthenticate =
       Boolean(localStorage.getItem("isAuthenticate")) ?? false;
     this._apiService = new FetchService();
-    console.log(this);
   }
 
   public async SignIn(model: SignInModel): Promise<boolean> {
@@ -56,7 +55,6 @@ class AuthService {
   public async Logout(): Promise<unknown> {
     this.isAuthenticate = false;
     localStorage.removeItem("isAuthenticate");
-    console.log(this);
     return this._apiService.post(
       "https://ya-praktikum.tech/api/v2/auth/logout",
       {
