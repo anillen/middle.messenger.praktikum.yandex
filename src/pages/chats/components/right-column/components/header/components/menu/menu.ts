@@ -9,6 +9,10 @@ import ChatService from "../../../../../../../../../services/ChatService/ChatSer
 import Modal from "../../../../../modal/modal";
 import AccountService from "../../../../../../../../../services/AccountService/AccountService";
 import ChatStore from "../../../../../../../../../store/ChatStore";
+import addChatImage from "../../../../../../../../../static/add-chat.svg";
+import addUserImage from "../../../../../../../../../static/add-user.svg";
+import deleteUserImage from "../../../../../../../../../static/delete-user.svg";
+import deleteChatImage from "../../../../../../../../../static/delete-chat.svg";
 
 interface AddUserInChatModel {
   login: string;
@@ -48,7 +52,7 @@ export default class Menu extends Block {
       currentChatId: null,
       isShow: false,
       addChatButton: new Button({
-        image: "/static/add-chat.svg",
+        image: addChatImage,
         text: "Создать чат",
         class: "button_menu",
         events: {
@@ -81,7 +85,7 @@ export default class Menu extends Block {
         },
       }),
       addUserButton: new Button({
-        image: "/static/add-user.svg",
+        image: addUserImage,
         text: "Добавить пользователя",
         class: "button_menu",
         events: {
@@ -110,7 +114,7 @@ export default class Menu extends Block {
                   const formData = GetFormData<AddUserInChatModel>(e.target);
                   AccountService.searchUserByLogin(formData.login).then(
                     result => {
-                      if(result.length==0){
+                      if (result.length == 0) {
                         modal.setError("Не найдено ни одного пользователя");
                         return;
                       }
@@ -130,7 +134,7 @@ export default class Menu extends Block {
         },
       }),
       removeUserButton: new Button({
-        image: "/static/delete-user.svg",
+        image: deleteUserImage,
         text: "Удалить пользователя",
         class: "button_menu",
         events: {
@@ -159,7 +163,7 @@ export default class Menu extends Block {
                   const formData = GetFormData<AddUserInChatModel>(e.target);
                   AccountService.searchUserByLogin(formData.login).then(
                     result => {
-                      if(result.length==0){
+                      if (result.length == 0) {
                         modal.setError("Не найдено ни одного пользователя");
                         return;
                       }
@@ -179,7 +183,7 @@ export default class Menu extends Block {
         },
       }),
       removeChatButton: new Button({
-        image: "/static/delete-chat.svg",
+        image: deleteChatImage,
         text: "Удалить чат",
         class: "button_menu",
       }),
