@@ -59,6 +59,10 @@ export default class DataWrapper extends Block {
 
   refresh() {
     AuthService.GetUserInfo().then(result => {
+      if (result == null) {
+        return;
+      }
+
       this.setProps({
         ...this.props,
         firstName: result.first_name,
@@ -84,6 +88,9 @@ export default class DataWrapper extends Block {
 
   constructor(showAvatarChangeModal: Function) {
     AuthService.GetUserInfo().then(result => {
+      if (result == null) {
+        return;
+      }
       this.setProps({
         ...this.props,
         firstName: result.first_name,

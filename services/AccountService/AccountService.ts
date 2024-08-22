@@ -1,3 +1,4 @@
+import { Exception } from "sass";
 import UserInfo from "../AuthService/models/UserInfo";
 import FetchService from "../FetchService/FetchService";
 import ResponseModel from "../Models/ResponseModel";
@@ -13,10 +14,14 @@ class AccountService {
   }
 
   async changeUserProfile(userInfo: SwitchDataModel): Promise<void> {
-    this._apiService.put("https://ya-praktikum.tech/api/v2/user/profile", {
-      method: "put",
-      data: userInfo,
-    });
+    this._apiService
+      .put("https://ya-praktikum.tech/api/v2/user/profile", {
+        method: "put",
+        data: userInfo,
+      })
+      .catch((ex: Exception) => {
+        console.error("Ошибка смены данных пользователя:" + ex.message);
+      });
   }
 
   async changePassword(
@@ -36,10 +41,14 @@ class AccountService {
         } else {
           return false;
         }
+      })
+      .catch((ex: Exception) => {
+        console.error("Ошибка смены пароля:" + ex.message);
+        return false;
       });
   }
 
-  async changeAvatar(avatarModel: SwitchAvatarModel): Promise<UserInfo> {
+  async changeAvatar(avatarModel: SwitchAvatarModel): Promise<UserInfo | null> {
     const formData = new FormData();
     formData.append("avatar", avatarModel.file);
     return this._apiService
@@ -47,7 +56,13 @@ class AccountService {
         method: "put",
         formData: formData,
       })
-      .then(result => result) as Promise<UserInfo>;
+      .then(result => {
+        return JSON.parse(result.response) as UserInfo;
+      })
+      .catch((ex: Exception) => {
+        console.error("Ошибка смены аватара:" + ex.message);
+        return null;
+      });
   }
 
   async searchUserByLogin(login: string): Promise<Array<UserInfo>> {
@@ -61,6 +76,10 @@ class AccountService {
       .then(result => {
         const { response } = result as ResponseModel;
         return JSON.parse(response) as Array<UserInfo>;
+      })
+      .catch((ex: Exception) => {
+        console.error("Ошибка поиска:" + ex.message);
+        return new Array<UserInfo>();
       });
   }
 }
