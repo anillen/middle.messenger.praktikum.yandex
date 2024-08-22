@@ -22,7 +22,6 @@ class AuthService {
         data: model,
       })
       .then(result => {
-        console.log(result);
         switch (result.status) {
           case 200:
             this.isAuthenticate = true;
@@ -56,7 +55,6 @@ class AuthService {
         data: model,
       })
       .then((result: any) => {
-        console.log(result);
         if (result.status == 200) {
           this.isAuthenticate = true;
           return true;
