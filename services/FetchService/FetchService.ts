@@ -1,4 +1,5 @@
 import { queryString } from "../../utils/QueryString";
+import ResponseModel from "../Models/ResponseModel";
 
 const METHODS = {
   GET: "GET",
@@ -22,7 +23,7 @@ interface FetchServiceOptions {
 type HTTPMethod = (
   url: string,
   options?: FetchServiceOptions
-) => Promise<unknown>;
+) => Promise<ResponseModel>;
 
 export default class FetchService {
   get: HTTPMethod = (url, options) => {
@@ -40,7 +41,7 @@ export default class FetchService {
   };
 
   request = (url: string, options: FetchServiceOptions) => {
-    return new Promise((resolve, reject) => {
+    return new Promise<ResponseModel>((resolve, reject) => {
       const { headers = {}, method, data, formData } = options;
 
       if (!formData) {
