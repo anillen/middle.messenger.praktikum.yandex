@@ -57,6 +57,13 @@ export default class ChatList extends Block {
   }
   public render(): Node {
     let template: string = "";
+
+    if (!this.props.chats) {
+      template = "Пожалуйста подождите...";
+    }
+    if (this.props.chats?.length == 0) {
+      template = "Список чатов пуст";
+    }
     this.props.chats?.forEach((_chat: Block, index: number) => {
       template += `{{{chats${index}}}} `;
     });
