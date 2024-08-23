@@ -4,7 +4,6 @@ import SignInModel from "./models/SignInModel";
 import SignUpModel from "./models/SignUpModel";
 import UserInfo from "./models/UserInfo";
 import ErrorModel from "../Models/ErrorModel";
-import ChatStore from "../../store/ChatStore";
 
 class AuthService {
   public isAuthenticate: boolean;

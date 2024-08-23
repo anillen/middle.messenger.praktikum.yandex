@@ -13,9 +13,6 @@ import addChatImage from "../../../../../../../../../static/add-chat.svg";
 import addUserImage from "../../../../../../../../../static/add-user.svg";
 import deleteUserImage from "../../../../../../../../../static/delete-user.svg";
 import deleteChatImage from "../../../../../../../../../static/delete-chat.svg";
-import ChatListItem from "../../../../../left-column/components/chat-list/components/chat-list-item/chat-list-item";
-import Image from "../../../../../../../../components/image/image";
-import circleImage from "../../../../../../../../../static/circle.svg";
 
 interface AddUserInChatModel {
   login: string;
@@ -76,7 +73,7 @@ export default class Menu extends Block {
                 submit: (e: Event) => {
                   e.preventDefault();
                   const formData = GetFormData<CreateChatModel>(e.target);
-                  ChatService.createChat(formData).then(result => {
+                  ChatService.createChat(formData).then(() => {
                     ChatStore.updateListChat = true;
                     modal.setIsShowModal(false);
                   });

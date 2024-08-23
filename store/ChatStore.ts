@@ -86,7 +86,8 @@ class ChatStore {
     });
   }
 
-  private _openSocket(chatId: number, token: string, userId: number) {
+  _openSocket(chatId: number, token: string, userId: number) {
+
     console.log("OPEN SOCKET", userId, chatId, token);
     this._socket = new WebSocket(
       `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`

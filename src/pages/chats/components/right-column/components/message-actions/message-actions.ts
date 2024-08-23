@@ -3,7 +3,6 @@ import Button from "../../../../../../components/button/button";
 import Input from "../../../../../../components/input/input";
 import messageActionsTemplate from "./message-actions.hbs";
 import "./message-actions.scss";
-import GetFormData from "../../../../../../../utils/GetFormData";
 import { MessageRegexp } from "../../../../../../../constants/Regexps";
 import clipImage from "../../../../../../../static/clip.svg";
 import sendButtonImage from "../../../../../../../static/arrow-right.svg";
@@ -55,7 +54,7 @@ export default class MessageActions extends Block {
         submit: formSubmitHandler,
       },
     });
-    
+
   }
   public render(): Node {
     return this.compile(messageActionsTemplate, this.props);
