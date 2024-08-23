@@ -5,6 +5,14 @@ import ChatListItem from "../src/pages/chats/components/left-column/components/c
 import MessageListItem from "../src/pages/chats/components/right-column/components/message-list/components/message-list-item/message-list-item";
 import Block from "../utils/Block";
 
+interface MessageModel {
+  content: string;
+  time: Date;
+  user_id: number;
+  id: number;
+  type: string;
+}
+
 class ChatStore {
   public currentChatId: number | null;
   public currentUserId: number | null;
@@ -83,11 +91,30 @@ class ChatStore {
           });
         },
       },
+      listMessages: {
+        set(value: Array<MessageListItem>) {
+          this._blocks.get("listMessages").forEach((block: Block) => {
+            block.setProps({
+              ...block.props,
+              listMessages: value,
+            });
+          });
+        },
+      },
     });
+  }
+  _checkConnect() {
+    setTimeout(() => {
+      this._socket?.send(
+        JSON.stringify({
+          type: "ping",
+        })
+      );
+      this._checkConnect();
+    }, 5000);
   }
 
   _openSocket(chatId: number, token: string, userId: number) {
-
     console.log("OPEN SOCKET", userId, chatId, token);
     this._socket = new WebSocket(
       `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`
@@ -98,11 +125,7 @@ class ChatStore {
     };
     this._socket.onopen = () => {
       console.log("Соединение успешно установлено");
-      this._socket?.send(
-        JSON.stringify({
-          type: "ping",
-        })
-      );
+      this._checkConnect();
     };
     this._socket.onclose = event => {
       if (event.wasClean) {
@@ -112,13 +135,25 @@ class ChatStore {
       }
       console.log(`Код: ${event.code} | Причина: ${event.reason}`);
     };
+
     this._socket.onmessage = event => {
-      console.log("Получены данные", event.data);
+      const data = JSON.parse(event.data) as MessageModel;
+      console.log(data);
+      if (data.type == "message") {
+        console.log(this.listMessages);
+        this.addMessage(
+          new MessageListItem({
+            text: data.content,
+            date: data.time?.toTimeString(),
+          })
+        );
+        console.log(this.listMessages);
+      }
     };
   }
 
   public sendMessage(message: string) {
-    console.log(this._socket);
+    console.log(message);
     this._socket?.send(
       JSON.stringify({
         content: message,
@@ -143,6 +178,11 @@ class ChatStore {
   }
   public setChatList(chatList: Array<ChatListItem>) {
     this.listChats = chatList;
+  }
+
+  public addMessage(item: MessageListItem) {
+    console.log(this.listMessages);
+    this.listMessages.push(item);
   }
 }
 

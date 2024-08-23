@@ -13,14 +13,13 @@ export default class MessageList extends Block {
   }
   public render(): Node {
     let template: string = "";
-
+    console.log(this.props);
     if (!this.props.currentChatId) {
       template = "<p>Не выбран чат</p>";
     } else if (this.props.listMessages?.length == 0) {
       template = "<p>Сообщений нет, будь первым!</p>";
     }
 
-    // template += `<p class="message-list__date">19 июля</p>`;
     this.props.listMessages?.forEach((_chat: Block, index: number) => {
       template += `{{{messages${index}}}} `;
     });

@@ -23,7 +23,7 @@ export default class ChatList extends Block {
             }),
             contactName: item.title,
             contentText: item.last_message?.content ?? "",
-            date: item.last_message?.time.toLocaleDateString() ?? "",
+            date: item.last_message?.time ?? "",
             unreadCount: item.unread_count,
             isActive: false,
             events: {
