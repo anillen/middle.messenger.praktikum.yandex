@@ -7,6 +7,7 @@ import GetFormData from "../../../../../../../utils/GetFormData";
 import { MessageRegexp } from "../../../../../../../constants/Regexps";
 import clipImage from "../../../../../../../static/clip.svg";
 import sendButtonImage from "../../../../../../../static/arrow-right.svg";
+import ChatStore from "../../../../../../../store/ChatStore";
 
 const inputValidation = (e: Event) => {
   if (e.target instanceof HTMLInputElement) {
@@ -31,7 +32,8 @@ const messageInput = new Input({
 
 const formSubmitHandler = (e: Event) => {
   e.preventDefault();
-  console.log(GetFormData(e.target));
+  const element = e.target as HTMLInputElement;
+  ChatStore.sendMessage(element.value);
 };
 
 export default class MessageActions extends Block {
@@ -53,6 +55,7 @@ export default class MessageActions extends Block {
         submit: formSubmitHandler,
       },
     });
+    
   }
   public render(): Node {
     return this.compile(messageActionsTemplate, this.props);

@@ -22,14 +22,20 @@ class ChatService {
         return new Array<ChatPreview>();
       });
   }
-  public async createChat(chatModel: CreateChatModel): Promise<void> {
-    this._apiService
+  public async createChat(
+    chatModel: CreateChatModel
+  ): Promise<ChatPreview | null> {
+    return this._apiService
       .post("https://ya-praktikum.tech/api/v2/chats", {
         data: chatModel,
         method: "post",
       })
+      .then(result => {
+        return JSON.parse(result.response) as ChatPreview;
+      })
       .catch((ex: Exception) => {
-        console.error("Ошибка создания чата: " + ex.message);
+        console.error("Ошибка создания чата: " + ex);
+        return null;
       });
   }
 
@@ -61,15 +67,13 @@ class ChatService {
       });
   }
 
-  public async getChatToken(
-    chatId: number
-  ): Promise<Array<ChatTokenModel> | null> {
+  public async getChatToken(chatId: number): Promise<ChatTokenModel | null> {
     return this._apiService
       .post(`https://ya-praktikum.tech/api/v2/chats/token/${chatId}`, {
         method: "post",
       })
       .then(result => {
-        return JSON.parse(result.response) as Array<ChatTokenModel>;
+        return JSON.parse(result.response) as ChatTokenModel;
       })
       .catch((ex: Exception) => {
         console.error("Ошибка удаления пользователя из чата: " + ex.message);
