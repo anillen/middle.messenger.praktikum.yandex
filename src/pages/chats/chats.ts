@@ -5,9 +5,9 @@ import LeftColumn from "./components/left-column/left-column";
 import RightColumn from "./components/right-column/right-column";
 import Modal from "./components/modal/modal";
 
-const modal = new Modal();
+let modal: Modal;
 
-const leftColumn = new LeftColumn();
+let leftColumn: LeftColumn;
 
 export default class Chats extends Block {
   showModal(modal: Modal) {
@@ -19,6 +19,9 @@ export default class Chats extends Block {
   }
 
   constructor() {
+    modal = new Modal();
+    leftColumn = new LeftColumn();
+    
     super("div", {
       attributes: { class: "chats-grid" },
       leftColumn: leftColumn,
