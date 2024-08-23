@@ -12,11 +12,14 @@ const onUpdateAvatar = () => {
   accountWrapper.refresh();
 };
 
-const avatarModal = new ChangeAvatarModal(onUpdateAvatar);
-const accountWrapper = new DataWrapper(showAvatarModal);
+let avatarModal: ChangeAvatarModal;
+let accountWrapper: DataWrapper;
 
 export default class Accounts extends Block {
   constructor() {
+    avatarModal = new ChangeAvatarModal(onUpdateAvatar);
+    accountWrapper = new DataWrapper(showAvatarModal);
+
     super("div", {
       attributes: { class: "account-container" },
       backSidebar: new BackSidebar(),

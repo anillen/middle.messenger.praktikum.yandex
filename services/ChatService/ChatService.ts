@@ -2,6 +2,7 @@ import { Exception } from "sass";
 import FetchService from "../FetchService/FetchService";
 import ChatPreview from "./models/ChatPreview";
 import CreateChatModel from "./models/CreateChatModel";
+import ChatTokenModel from "./models/ChatTokenModel";
 
 class ChatService {
   private _apiService: FetchService;
@@ -57,6 +58,22 @@ class ChatService {
       })
       .catch((ex: Exception) => {
         console.error("Ошибка удаления пользователя из чата: " + ex.message);
+      });
+  }
+
+  public async getChatToken(
+    chatId: number
+  ): Promise<Array<ChatTokenModel> | null> {
+    return this._apiService
+      .post(`https://ya-praktikum.tech/api/v2/chats/token/${chatId}`, {
+        method: "post",
+      })
+      .then(result => {
+        return JSON.parse(result.response) as Array<ChatTokenModel>;
+      })
+      .catch((ex: Exception) => {
+        console.error("Ошибка удаления пользователя из чата: " + ex.message);
+        return null;
       });
   }
 }
