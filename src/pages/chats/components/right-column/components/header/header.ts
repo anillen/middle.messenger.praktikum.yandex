@@ -8,7 +8,7 @@ import Menu from "./components/menu/menu";
 import Modal from "../../../modal/modal";
 
 interface HeaderProperties {
-  headerContact: HeaderContact;
+  headerContact: HeaderContact | null;
   modal: Modal;
 }
 

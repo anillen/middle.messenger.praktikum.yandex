@@ -72,9 +72,9 @@ export default class Menu extends Block {
               events: {
                 submit: (e: Event) => {
                   e.preventDefault();
-                  ChatService.createChat(
-                    GetFormData<CreateChatModel>(e.target)
-                  ).then(() => {
+                  const formData = GetFormData<CreateChatModel>(e.target);
+                  ChatService.createChat(formData).then(() => {
+                    ChatStore.updateListChat = true;
                     modal.setIsShowModal(false);
                   });
                 },
@@ -189,7 +189,7 @@ export default class Menu extends Block {
       }),
     });
 
-    ChatStore.subscribe(this);
+    ChatStore.subscribe(this, "currentChatId");
   }
 
   public render(): Node {

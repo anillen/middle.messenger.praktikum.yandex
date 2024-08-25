@@ -25,7 +25,6 @@ class AuthService {
         switch (result.status) {
           case 200:
             this.isAuthenticate = true;
-            localStorage.setItem("isAuthenticate", "true");
             return true;
           case 400:
             const { reason } = JSON.parse(result.response) as ErrorModel;

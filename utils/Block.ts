@@ -1,4 +1,5 @@
 import EventBus from "./EventBus";
+
 import { v4 as makeUUID } from "uuid";
 
 interface MetaInfo {
