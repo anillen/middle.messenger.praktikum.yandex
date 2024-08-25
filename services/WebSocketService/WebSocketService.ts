@@ -1,4 +1,3 @@
-import Chats from "../../src/pages/chats/chats";
 import MessageListItem from "../../src/pages/chats/components/right-column/components/message-list/components/message-list-item/message-list-item";
 import ChatStore from "../../store/ChatStore";
 
