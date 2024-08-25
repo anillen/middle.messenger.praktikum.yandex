@@ -11,6 +11,6 @@ export default interface ChatPreview {
 
 export interface Message {
   user: UserInfo | null;
-  time: Date;
+  time: string;
   content: string;
 }

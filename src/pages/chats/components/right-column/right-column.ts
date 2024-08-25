@@ -8,25 +8,21 @@ import MessageActions from "./components/message-actions/message-actions";
 import "./right-column.scss";
 import avatarImage from "../../../../../static/circle.svg";
 import Modal from "../modal/modal";
+import ChatStore from "../../../../../store/ChatStore";
 
 export default class RightColumn extends Block {
   constructor(modal: Modal) {
     super("div", {
       attributes: { class: "chats-grid__right-column" },
       header: new Header({
-        headerContact: new HeaderContact({
-          imageContact: new Image({
-            alt: "Аватар пользователя",
-            class: "contact-wrapper__image",
-            source: avatarImage,
-          }),
-          name: "Вадим",
-        }),
+        headerContact: null,
         modal: modal,
       }),
-      messageList: new MessageList(),
-      messageActions: new MessageActions(),
+      listMessages: null,
+      messageActions: null,
     });
+
+    ChatStore.subscribe(this, "listMessages");
   }
   public render(): Node {
     return this.compile(rightColumnTemplate, this.props);

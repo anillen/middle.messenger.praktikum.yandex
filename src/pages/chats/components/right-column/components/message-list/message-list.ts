@@ -1,29 +1,29 @@
 import Block from "../../../../../../../utils/Block";
 import Handlebars from "handlebars";
 import "./message-list.scss";
-import ChatStore from "../../../../../../../store/ChatStore";
+import MessageListItem from "./components/message-list-item/message-list-item";
 
 export default class MessageList extends Block {
-  constructor() {
+  constructor(listMessage: Array<MessageListItem>) {
     super("div", {
       attributes: { class: "right-column__message-list" },
+      listMessages: listMessage,
     });
-
-    ChatStore.subscribe(this, "listMessages");
   }
   public render(): Node {
     let template: string = "";
-    console.log(this.props);
-    if (!this.props.currentChatId) {
-      template = "<p>Не выбран чат</p>";
-    } else if (this.props.listMessages?.length == 0) {
+    if (
+      this.props.listMessages == null ||
+      this.props.listMessages?.length == 0
+    ) {
       template = "<p>Сообщений нет, будь первым!</p>";
+    } else {
+      this.props.listMessages?.forEach((_chat: Block, index: number) => {
+        template += `{{{listMessages${index}}}} `;
+      });
     }
-
-    this.props.listMessages?.forEach((_chat: Block, index: number) => {
-      template += `{{{messages${index}}}} `;
-    });
-
+    console.log(this.props);
+    console.log(template);
     return this.compile(Handlebars.compile(template), this.props);
   }
 }

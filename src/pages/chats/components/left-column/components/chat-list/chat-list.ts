@@ -12,6 +12,11 @@ export default class ChatList extends Block {
     ChatService.getChats().then(result => {
       ChatStore.setChatList(
         result?.map(item => {
+          const date =
+            item.last_message != null
+              ? new Date(item.last_message.time).toLocaleTimeString()
+              : "";
+
           let chatItem = new ChatListItem({
             id: item.id,
             avatarImage: new Image({
@@ -23,7 +28,7 @@ export default class ChatList extends Block {
             }),
             contactName: item.title,
             contentText: item.last_message?.content ?? "",
-            date: item.last_message?.time ?? "",
+            date: date,
             unreadCount: item.unread_count,
             isActive: false,
             events: {

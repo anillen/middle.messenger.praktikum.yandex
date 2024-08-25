@@ -6,8 +6,8 @@ import "./message-actions.scss";
 import { MessageRegexp } from "../../../../../../../constants/Regexps";
 import clipImage from "../../../../../../../static/clip.svg";
 import sendButtonImage from "../../../../../../../static/arrow-right.svg";
-import ChatStore from "../../../../../../../store/ChatStore";
 import GetFormData from "../../../../../../../utils/GetFormData";
+import WebSocketService from "../../../../../../../services/WebSocketService/WebSocketService";
 
 interface SendMessageModel {
   message: string;
@@ -37,8 +37,8 @@ const messageInput = new Input({
 const formSubmitHandler = (e: Event) => {
   e.preventDefault();
   const element = e.target as HTMLInputElement;
-
-  ChatStore.sendMessage(GetFormData<SendMessageModel>(element).message);
+  element.value = "";
+  WebSocketService.sendMessage(GetFormData<SendMessageModel>(element).message);
 };
 
 export default class MessageActions extends Block {
