@@ -22,8 +22,6 @@ export default class MessageList extends Block {
         template += `{{{listMessages${index}}}} `;
       });
     }
-    console.log(this.props);
-    console.log(template);
     return this.compile(Handlebars.compile(template), this.props);
   }
 }

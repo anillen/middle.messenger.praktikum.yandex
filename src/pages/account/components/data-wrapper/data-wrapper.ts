@@ -10,6 +10,7 @@ import AccountService from "../../../../../services/AccountService/AccountServic
 import SwitchDataModel from "../../../../../services/AccountService/models/SwitchDataModel";
 import UserInfo from "../../../../../services/AuthService/models/UserInfo";
 import SwitchPasswordWrapper from "./components/switch-password-wrapper/switch-password-wrapper";
+import BaseURL from "../../../../../constants/BaseURL";
 
 export default class DataWrapper extends Block {
   switchDataformSubmitHandler(e: Event) {
@@ -79,7 +80,7 @@ export default class DataWrapper extends Block {
           ...this.props,
           avatarImage: new Image({
             alt: "Аватар",
-            source: `https://ya-praktikum.tech/api/v2/resources/${result.avatar}`,
+            source: `${BaseURL}/resources/${result.avatar}`,
           }),
         });
       }
@@ -107,7 +108,7 @@ export default class DataWrapper extends Block {
           ...this.props,
           avatarImage: new Image({
             alt: "Аватар",
-            source: `https://ya-praktikum.tech/api/v2/resources/${result.avatar}`,
+            source: `${BaseURL}/resources/${result.avatar}`,
           }),
         });
       }

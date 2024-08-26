@@ -5,6 +5,7 @@ import ResponseModel from "../Models/ResponseModel";
 import SwitchAvatarModel from "./models/SwitchAvatarModel";
 import SwitchDataModel from "./models/SwitchDataModel";
 import SwitchPasswordModel from "./models/SwitchPasswordModel";
+import BaseURL from "../../constants/BaseURL";
 
 class AccountService {
   private _apiService: FetchService;
@@ -15,7 +16,7 @@ class AccountService {
 
   async changeUserProfile(userInfo: SwitchDataModel): Promise<void> {
     this._apiService
-      .put("https://ya-praktikum.tech/api/v2/user/profile", {
+      .put(`${BaseURL}/user/profile`, {
         method: "put",
         data: userInfo,
       })
@@ -28,14 +29,14 @@ class AccountService {
     switchPasswordModel: SwitchPasswordModel
   ): Promise<boolean> {
     return this._apiService
-      .put("https://ya-praktikum.tech/api/v2/user/password", {
+      .put(`${BaseURL}/user/password`, {
         method: "put",
         data: {
           oldPassword: switchPasswordModel.oldPassword,
           newPassword: switchPasswordModel.newPassword,
         },
       })
-      .then((result: any) => {
+      .then(result => {
         if (result.status == 200) {
           return true;
         } else {
@@ -52,12 +53,16 @@ class AccountService {
     const formData = new FormData();
     formData.append("avatar", avatarModel.file);
     return this._apiService
-      .put("https://ya-praktikum.tech/api/v2/user/profile/avatar", {
+      .put(`${BaseURL}/user/profile/avatar`, {
         method: "put",
         formData: formData,
       })
       .then(result => {
-        return JSON.parse(result.response) as UserInfo;
+        try {
+          return JSON.parse(result.response) as UserInfo;
+        } catch {
+          throw new Error("Ошибка десериализации объекта");
+        }
       })
       .catch((ex: Exception) => {
         console.error("Ошибка смены аватара:" + ex.message);
@@ -67,7 +72,7 @@ class AccountService {
 
   async searchUserByLogin(login: string): Promise<Array<UserInfo>> {
     return this._apiService
-      .post("https://ya-praktikum.tech/api/v2/user/search", {
+      .post(`${BaseURL}/user/search`, {
         method: "post",
         data: {
           login: login,
@@ -75,7 +80,12 @@ class AccountService {
       })
       .then(result => {
         const { response } = result as ResponseModel;
-        return JSON.parse(response) as Array<UserInfo>;
+
+        try {
+          return JSON.parse(response) as Array<UserInfo>;
+        } catch {
+          throw new Error("Ошибка десериализации объекта");
+        }
       })
       .catch((ex: Exception) => {
         console.error("Ошибка поиска:" + ex.message);

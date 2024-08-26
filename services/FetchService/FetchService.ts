@@ -52,7 +52,7 @@ export default class FetchService {
 
       const xhr = new XMLHttpRequest();
       xhr.withCredentials = true;
-      
+
       if (method == "GET" && data) {
         xhr.open(method, `${url}?${queryString(data)}`);
       } else {

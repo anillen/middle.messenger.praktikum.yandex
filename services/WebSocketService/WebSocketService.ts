@@ -46,7 +46,12 @@ class WebSocketService {
     };
 
     this._socket.onmessage = event => {
-      const data = JSON.parse(event.data) as MessageModel;
+      let data = null;
+      try {
+        data = JSON.parse(event.data);
+      } catch {
+        throw new Error("Ошибка десериализации объекта");
+      }
 
       if (data instanceof Array) {
         ChatStore.replaceMessages(
@@ -63,7 +68,9 @@ class WebSocketService {
       if (data.type == "pong") {
         return;
       }
+
       if (data.type == "message") {
+        data = data as MessageModel;
         const date = new Date(data.time);
         ChatStore.addMessage(
           new MessageListItem({

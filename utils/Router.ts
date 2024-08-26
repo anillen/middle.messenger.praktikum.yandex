@@ -4,7 +4,7 @@ import Route from "./Route";
 class Router {
   public routes: Array<Route>;
   public history: History;
-  private _currentRoute: any;
+  private _currentRoute: Route | null;
   private _rootQuery: string;
   private static __instance: Router;
 
@@ -22,7 +22,7 @@ class Router {
     Router.__instance = this;
   }
 
-  public use(path: string, block: any, isPrivate: boolean = false) {
+  public use<T>(path: string, block: T, isPrivate: boolean = false) {
     const route = new Route(path, block, {
       rootQuery: this._rootQuery,
       isPrivate: isPrivate,
