@@ -1,0 +1,13 @@
+@import "/main.scss";
+
+.switch-data-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

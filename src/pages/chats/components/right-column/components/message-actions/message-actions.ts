@@ -3,10 +3,15 @@ import Button from "../../../../../../components/button/button";
 import Input from "../../../../../../components/input/input";
 import messageActionsTemplate from "./message-actions.hbs";
 import "./message-actions.scss";
-import GetFormData from "../../../../../../../utils/GetFormData";
 import { MessageRegexp } from "../../../../../../../constants/Regexps";
 import clipImage from "../../../../../../../static/clip.svg";
 import sendButtonImage from "../../../../../../../static/arrow-right.svg";
+import GetFormData from "../../../../../../../utils/GetFormData";
+import WebSocketService from "../../../../../../../services/WebSocketService/WebSocketService";
+
+interface SendMessageModel {
+  message: string;
+}
 
 const inputValidation = (e: Event) => {
   if (e.target instanceof HTMLInputElement) {
@@ -31,7 +36,9 @@ const messageInput = new Input({
 
 const formSubmitHandler = (e: Event) => {
   e.preventDefault();
-  console.log(GetFormData(e.target));
+  const element = e.target as HTMLInputElement;
+  element.value = "";
+  WebSocketService.sendMessage(GetFormData<SendMessageModel>(element).message);
 };
 
 export default class MessageActions extends Block {

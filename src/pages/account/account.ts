@@ -2,53 +2,29 @@ import Block from "../../../utils/Block";
 import "./account.scss";
 import accountsTemplate from "./account.hbs";
 import BackSidebar from "../../components/back-sidebar/back-sidebar";
-import AccountFrom from "./components/account-form/account-form";
-import DataWrapper from "./components/account-form/components/data-wrapper/data-wrapper";
-import ActionsWrapper from "./components/account-form/components/actions-wrapper/actions-wrapper";
-import SaveActionWrapper from "./components/account-form/components/save-action-wrapper/save-action-wrapper";
-import GetFormData from "../../../utils/GetFormData";
-import SwitchPasswordWrapper from "./components/account-form/components/switch-password-wrapper/switch-password-wrapper";
+import DataWrapper from "./components/data-wrapper/data-wrapper";
+import ChangeAvatarModal from "./components/data-wrapper/components/change-avatar-modal/change-avatar-modal";
 
-const switchDataHandler = () => {
-  accountForm.setProps({
-    actionsWrapper: new SaveActionWrapper(),
-    dataWrapper: new DataWrapper(false),
-  });
+const showAvatarModal = () => {
+  avatarModal.showModal();
+};
+const onUpdateAvatar = () => {
+  accountWrapper.refresh();
 };
 
-const switchPasswordHandler = () => {
-  accountForm.setProps({
-    actionsWrapper: new SaveActionWrapper(),
-    dataWrapper: new SwitchPasswordWrapper(),
-  });
-};
-
-const submitFormHandler = (e: Event) => {
-  e.preventDefault();
-  console.log(GetFormData(e.target));
-
-  accountForm.setProps({
-    dataWrapper: new DataWrapper(true),
-    actionsWrapper: new ActionsWrapper(
-      switchDataHandler,
-      switchPasswordHandler
-    ),
-    submitFormHandler: submitFormHandler,
-  });
-};
-
-const accountForm = new AccountFrom({
-  dataWrapper: new DataWrapper(true),
-  actionsWrapper: new ActionsWrapper(switchDataHandler, switchPasswordHandler),
-  submitFormHandler: submitFormHandler,
-});
+let avatarModal: ChangeAvatarModal;
+let accountWrapper: DataWrapper;
 
 export default class Accounts extends Block {
   constructor() {
+    avatarModal = new ChangeAvatarModal(onUpdateAvatar);
+    accountWrapper = new DataWrapper(showAvatarModal);
+
     super("div", {
       attributes: { class: "account-container" },
       backSidebar: new BackSidebar(),
-      accountForm: accountForm,
+      accountWrapper: accountWrapper,
+      changeAvatarModal: avatarModal,
     });
   }
 

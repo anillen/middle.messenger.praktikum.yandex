@@ -10,7 +10,8 @@ class InputProperties {
   value?: string;
   events?: object;
   name?: string;
-  required?:boolean = false;
+  required?: boolean = false;
+  accept?: string;
 }
 
 export default class Input extends Block {

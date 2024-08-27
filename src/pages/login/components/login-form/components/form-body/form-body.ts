@@ -4,7 +4,7 @@ import "./form-body.scss";
 import FormInput from "../../../../../../components/form/components/input/input";
 
 export default class LoginFormBody extends FormBody {
-  constructor() {
+  constructor(errorText: string | null = null) {
     super({
       loginInput: new FormInput({
         isRequired: true,
@@ -17,6 +17,7 @@ export default class LoginFormBody extends FormBody {
         type: "password",
         name: "password",
       }),
+      errorText: errorText,
     });
   }
 
