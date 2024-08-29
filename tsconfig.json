@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "strict": true,
-    "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "noEmit": true,
@@ -9,9 +8,12 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noImplicitAny": true,
     "sourceMap": true,
     "strictNullChecks": true,
     "lib": ["ES2017", "dom"]
-  }
+  },
+  "exclude": ["node_modules"]
 }
