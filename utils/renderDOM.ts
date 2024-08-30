@@ -1,9 +1,11 @@
-import Block from "./Block";
+import Block from "./Block/Block";
 
 export function render(query: string, block: Block): Element | null {
   const root = document.querySelector(query);
-
-  root!.appendChild(block.getContent());
+  if (!root) {
+    return null;
+  }
+  root.appendChild(block.getContent());
 
   block.dispatchComponentDidMount();
 

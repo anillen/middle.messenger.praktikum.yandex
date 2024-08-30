@@ -1,8 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/mocharc.json",
   "extension": ["ts"],
-  "spec": "test/**/*.test.ts",
-  "import": ["./mochaloader.js"],
-  "require": ["ts-node/register"],
+  "require": ["ts-node/register","test/setupJsDom.js"],
   "node-option": ["experimental-specifier-resolution=node"]
 }

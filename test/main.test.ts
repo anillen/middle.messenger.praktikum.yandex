@@ -1,12 +1,12 @@
 import { expect } from "chai";
-import { RunTest } from "./testing";
+import { RunTest } from "./run-testing";
 
-describe("Typescript test", () => {
-  it("should be able to execute a test", () => {
+describe("Test system", () => {
+  it("Test running", () => {
     expect(true);
   });
 
-  it("should return string correctly", () => {
-    expect(RunTest("accept"), "Accept mocha");
+  it("Test imports", () => {
+    expect(RunTest("accept"));
   });
 });

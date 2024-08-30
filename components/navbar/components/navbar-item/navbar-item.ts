@@ -1,4 +1,4 @@
-import Block from "../../../../utils/Block";
+import Block from "../../../../utils/Block/Block";
 import navbaritemTemplate from "./navbar-item.hbs";
 import "./navbar-item.scss";
 

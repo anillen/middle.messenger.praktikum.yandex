@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
-import Block from "../../../../../utils/Block";
+import Block from "../../../../../utils/Block/Block";
 import inputTemplate from "./input-wrapper.hbs";
 import "./input-wrapper.scss";
 

@@ -1,18 +1,16 @@
-import AuthService from "../services/AuthService/AuthService";
 import Route from "./Route";
 
 class Router {
   public routes: Array<Route>;
   public history: History;
-  private _currentRoute: Route | null;
+  public currentRoute: Route | null;
   private _rootQuery: string;
   private static __instance: Router;
 
   constructor(rootQuery: string) {
     this.routes = [];
     this.history = window.history;
-
-    this._currentRoute = null;
+    this.currentRoute = null;
     this._rootQuery = rootQuery;
 
     if (Router.__instance) {
@@ -48,14 +46,16 @@ class Router {
       this.go("/error/404");
       return;
     }
-    if (route.isPrivate && !AuthService.isAuthenticate) {
+
+    if (!this.onRoute(route)) {
       this.go("/");
       return;
     }
-    if (this._currentRoute) {
-      this._currentRoute.leave();
+
+    if (this.currentRoute) {
+      this.currentRoute.leave();
     }
-    this._currentRoute = route;
+    this.currentRoute = route;
     route.render();
   }
 
@@ -66,6 +66,13 @@ class Router {
 
   public getRoute(pathname: string) {
     return this.routes.find(route => route.match(pathname));
+  }
+
+  public onRoute(route: Route): boolean {
+    if (route.isPrivate) {
+      return false;
+    }
+    return true;
   }
 
   public back() {

@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import Handlebars from "handlebars";
 import "./message-list.scss";
 import MessageListItem from "./components/message-list-item/message-list-item";

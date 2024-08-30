@@ -1,4 +1,4 @@
-import Block from "../../../../../../../../../utils/Block";
+import Block from "../../../../../../../../../utils/Block/Block";
 import "./menu.scss";
 import template from "./menu.hbs";
 import Button from "../../../../../../../../components/button/button";

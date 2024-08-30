@@ -1,6 +1,6 @@
 import "./switch-data-wrapper.scss";
 import template from "./switch-data-wrapper.hbs";
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import UserInfo from "../../../../../../../services/AuthService/models/UserInfo";
 import InputWrapper from "../../../input-wrapper/input-wrapper";
 import {

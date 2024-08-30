@@ -1,4 +1,4 @@
-import Block from "../../../../../../../../utils/Block";
+import Block from "../../../../../../../../utils/Block/Block";
 import Image from "../../../../../../../components/image/image";
 import Input from "../../../../../../../components/input/input";
 import searchInputTemplate from "./search-input.hbs";

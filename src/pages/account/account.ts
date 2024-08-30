@@ -1,4 +1,4 @@
-import Block from "../../../utils/Block";
+import Block from "../../../utils/Block/Block";
 import "./account.scss";
 import accountsTemplate from "./account.hbs";
 import BackSidebar from "../../components/back-sidebar/back-sidebar";

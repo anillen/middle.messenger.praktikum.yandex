@@ -14,7 +14,7 @@ interface Header {
 
 interface FetchServiceOptions {
   headers?: Header;
-  method: string;
+  method?: string;
   data?: any;
   formData?: FormData;
   timeout?: number;

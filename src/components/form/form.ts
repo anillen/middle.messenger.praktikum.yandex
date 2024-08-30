@@ -1,4 +1,4 @@
-import Block from "../../../utils/Block";
+import Block from "../../../utils/Block/Block";
 import FormBody from "./components/body/body";
 import FormFooter from "./components/footer/footer";
 import FormHeader from "./components/header/header";

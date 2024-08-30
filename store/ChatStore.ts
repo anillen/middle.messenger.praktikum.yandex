@@ -6,7 +6,7 @@ import ChatListItem from "../src/pages/chats/components/left-column/components/c
 import MessageActions from "../src/pages/chats/components/right-column/components/message-actions/message-actions";
 import MessageListItem from "../src/pages/chats/components/right-column/components/message-list/components/message-list-item/message-list-item";
 import MessageList from "../src/pages/chats/components/right-column/components/message-list/message-list";
-import Block from "../utils/Block";
+import Block from "../utils/Block/Block";
 
 class ChatStore {
   public currentChatId: number | null;

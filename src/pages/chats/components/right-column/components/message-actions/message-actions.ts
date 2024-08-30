@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import Button from "../../../../../../components/button/button";
 import Input from "../../../../../../components/input/input";
 import messageActionsTemplate from "./message-actions.hbs";

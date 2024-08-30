@@ -1,4 +1,4 @@
-import EventBus from "./EventBus";
+import EventBus from "../EventBus";
 
 import { v4 as makeUUID } from "uuid";
 
@@ -83,7 +83,7 @@ export default class Block {
     Object.assign(this.attributes, attributes);
   };
 
-  public compile(template: Function, props: Properties): Node {
+  public compile(template: Function, props: Properties): HTMLElement {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {
@@ -107,8 +107,8 @@ export default class Block {
     return this._element;
   }
 
-  public render(): Node {
-    return new Node();
+  public render(): HTMLElement | null {
+    return null;
   }
 
   public getContent(): HTMLElement {
@@ -137,8 +137,10 @@ export default class Block {
     const block = this.render();
     this._removeEvents();
     this._element.innerHTML = "";
-
-    this._element.appendChild(block);
+    
+    if (block) {
+      this._element.appendChild(block);
+    }
 
     Object.keys(this.attributes).forEach(key => {
       if (this.attributes[key]) {

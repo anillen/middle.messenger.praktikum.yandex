@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import "./change-avatar-modal.scss";
 import template from "./change-avatar-modal.hbs";
 import Input from "../../../../../../components/input/input";

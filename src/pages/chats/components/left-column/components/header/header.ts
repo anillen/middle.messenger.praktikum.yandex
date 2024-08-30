@@ -1,8 +1,8 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import templateHeader from "./header.hbs";
 import "./header.scss";
 import SearchInput from "./search-input/search-input";
-import Router from "../../../../../../../utils/Router";
+import Router from "../../../../../../../utils/Router/Router";
 import Button from "../../../../../../components/button/button";
 
 const router = new Router("main");
