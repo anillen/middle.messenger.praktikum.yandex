@@ -11,8 +11,7 @@ class AuthService {
   private _apiService: FetchService;
 
   constructor() {
-    this.isAuthenticate =
-      Boolean(localStorage.getItem("isAuthenticate")) ?? false;
+    this.isAuthenticate = Boolean(localStorage.getItem("isAuthenticate"));
     this._apiService = new FetchService();
   }
 
@@ -39,7 +38,7 @@ class AuthService {
             } catch {
               throw new Error("Ошибка десериализации объекта");
             }
-
+            return false;
           default:
             this.isAuthenticate = false;
             localStorage.removeItem("isAuthenticate");
@@ -60,7 +59,7 @@ class AuthService {
         method: "post",
         data: model,
       })
-      .then((result) => {
+      .then(result => {
         if (result.status == 200) {
           this.isAuthenticate = true;
           return true;
@@ -94,7 +93,7 @@ class AuthService {
       .get(`${BaseURL}/auth/user`, {
         method: "get",
       })
-      .then((result) => {
+      .then(result => {
         try {
           return JSON.parse(result.response) as UserInfo;
         } catch {

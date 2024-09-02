@@ -48,7 +48,7 @@ class ChatService {
       });
   }
 
-  public async addUsersInChat(users: Array<Number>, chatId: number) {
+  public async addUsersInChat(users: Array<number>, chatId: number) {
     this._apiService
       .put(`${BaseURL}/chats/users`, {
         data: {
@@ -62,7 +62,7 @@ class ChatService {
       });
   }
 
-  public async deleteUsersInChat(users: Array<Number>, chatId: number) {
+  public async deleteUsersInChat(users: Array<number>, chatId: number) {
     this._apiService
       .delete(`${BaseURL}/chats/users`, {
         data: {

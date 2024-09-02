@@ -4,6 +4,7 @@ const dom = new JSDOM("<!doctype html><html><body></body></html>", {
   url: "http://localhost:3000",
 });
 
+
 global.document = dom.window.document;
 global.window = dom.window;
 global.history = dom.window.history;

@@ -1,10 +1,6 @@
 import { queryString } from "../../utils/QueryString";
 import ResponseModel from "../Models/ResponseModel";
 
-export type PlainObject<T = unknown> = {
-  [k in string]: T;
-};
-
 const METHODS = {
   GET: "GET",
   PUT: "PUT",
@@ -19,7 +15,7 @@ interface Header {
 interface FetchServiceOptions {
   headers?: Header;
   method?: string;
-  data?: PlainObject;
+  data?: any;
   formData?: FormData;
   timeout?: number;
 }

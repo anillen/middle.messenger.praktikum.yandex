@@ -1,4 +1,6 @@
-import { PlainObject } from "../services/FetchService/FetchService";
+export type PlainObject<T = unknown> = {
+  [k in string]: T;
+};
 
 function isPlainObject(value: unknown): value is PlainObject {
   return (

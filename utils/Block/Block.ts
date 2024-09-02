@@ -62,12 +62,13 @@ export default class Block {
     this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public componentDidMount(_oldProps?: object): void {}
 
   public dispatchComponentDidMount(): void {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM);
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public componentDidUpdate(_oldProps: object, _newProps: object): boolean {
     return true;
   }
@@ -107,7 +108,7 @@ export default class Block {
     return this._element;
   }
 
-  public render(): HTMLElement | null {
+  public render(): Node | null {
     return null;
   }
 

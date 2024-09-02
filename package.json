@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "checkTypes": "tsc && eslint",
+    "checkTypes": "tsc && eslint .",
     "build": "vite build",
     "test": "mocha --config=./.mocharc.json -n import=./mochaloader.js **/*.test.ts",
     "start": "npm run checkTypes && npm run test && vite build && vite preview --port 3000"
