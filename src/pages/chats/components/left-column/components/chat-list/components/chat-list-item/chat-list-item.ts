@@ -1,4 +1,4 @@
-import Block from "../../../../../../../../../utils/Block";
+import Block from "../../../../../../../../../utils/Block/Block";
 import Image from "../../../../../../../../components/image/image";
 import chatListItemTemplate from "./chat-list-item.hbs";
 import "./chat-list-item.scss";

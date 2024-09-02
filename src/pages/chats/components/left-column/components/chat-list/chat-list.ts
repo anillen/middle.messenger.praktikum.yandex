@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import ChatListItem from "./components/chat-list-item/chat-list-item";
 import Handlebars from "handlebars";
 import "./chat-list.scss";
@@ -6,6 +6,7 @@ import ChatService from "../../../../../../../services/ChatService/ChatService";
 import Image from "../../../../../../components/image/image";
 import ChatStore from "../../../../../../../store/ChatStore";
 import circleImage from "../../../../../../../static/circle.svg";
+import BaseURL from "../../../../../../../constants/BaseURL";
 
 export default class ChatList extends Block {
   updateChatList() {
@@ -22,7 +23,7 @@ export default class ChatList extends Block {
             avatarImage: new Image({
               alt: item.avatar ?? circleImage,
               source: item.avatar
-                ? `https://ya-praktikum.tech/api/v2/resources/${item.avatar}`
+                ? `${BaseURL}/resources/${item.avatar}`
                 : circleImage,
               class: "item__image",
             }),

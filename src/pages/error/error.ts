@@ -1,5 +1,5 @@
 import "./error.scss";
-import Block from "../../../utils/Block";
+import Block from "../../../utils/Block/Block";
 import Link from "../../components/link/link";
 import errorPageTemplate from "./error.hbs";
 

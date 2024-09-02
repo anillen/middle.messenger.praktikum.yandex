@@ -1,4 +1,4 @@
-import Block from "../../../../../utils/Block";
+import Block from "../../../../../utils/Block/Block";
 import formBodyTemplate from "./body.hbs";
 import "./body.scss";
 

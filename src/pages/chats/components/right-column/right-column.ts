@@ -1,4 +1,4 @@
-import Block from "../../../../../utils/Block";
+import Block from "../../../../../utils/Block/Block";
 import Header from "./components/header/header";
 import rightColumnTemplate from "./right-column.hbs";
 import "./right-column.scss";

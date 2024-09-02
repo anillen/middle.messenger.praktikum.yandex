@@ -5,7 +5,7 @@ import FormFooter from "../../../../components/form/components/footer/footer";
 import RegisterFormBody from "./components/form-body/form-body";
 import "./register-form.scss";
 import GetFormData from "../../../../../utils/GetFormData";
-import Router from "../../../../../utils/Router";
+import Router from "../../../../../utils/Router/Router";
 import AuthService from "../../../../../services/AuthService/AuthService";
 import SignUpModel from "../../../../../services/AuthService/models/SignUpModel";
 

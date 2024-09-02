@@ -1,4 +1,4 @@
-import Block from "../../../utils/Block";
+import Block from "../../../utils/Block/Block";
 import linkTemplate from "./link.hbs";
 import "./link.scss";
 

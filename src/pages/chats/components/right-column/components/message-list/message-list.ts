@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import Handlebars from "handlebars";
 import "./message-list.scss";
 import MessageListItem from "./components/message-list-item/message-list-item";
@@ -22,8 +22,6 @@ export default class MessageList extends Block {
         template += `{{{listMessages${index}}}} `;
       });
     }
-    console.log(this.props);
-    console.log(template);
     return this.compile(Handlebars.compile(template), this.props);
   }
 }

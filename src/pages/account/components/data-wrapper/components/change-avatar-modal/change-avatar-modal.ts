@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import "./change-avatar-modal.scss";
 import template from "./change-avatar-modal.hbs";
 import Input from "../../../../../../components/input/input";
@@ -35,11 +35,19 @@ export default class ChangeAvatarModal extends Block {
         accept: "image/png, image/jpeg",
         required: true,
         events: {
-          change: (e: any) => {
+          change: (e: Event) => {
+            const element = e.target as HTMLInputElement;
+            if (
+              element == null ||
+              element.files == null ||
+              element.files.length == 0
+            ) {
+              return;
+            }
             this.setProps({
               ...this.props,
-              file: e.target.files[0],
-              inputText: e.target.files[0].name,
+              file: element.files[0],
+              inputText: element.files[0].name,
             });
           },
         },

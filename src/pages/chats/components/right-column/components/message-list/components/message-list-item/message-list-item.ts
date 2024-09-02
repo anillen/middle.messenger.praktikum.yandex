@@ -1,4 +1,4 @@
-import Block from "../../../../../../../../../utils/Block";
+import Block from "../../../../../../../../../utils/Block/Block";
 import Image from "../../../../../../../../components/image/image";
 import messageListItemTemplate from "./message-list-item.hbs";
 import "./message-list-item.scss";

@@ -3,6 +3,7 @@ import FetchService from "../FetchService/FetchService";
 import ChatPreview from "./models/ChatPreview";
 import CreateChatModel from "./models/CreateChatModel";
 import ChatTokenModel from "./models/ChatTokenModel";
+import BaseURL from "../../constants/BaseURL";
 
 class ChatService {
   private _apiService: FetchService;
@@ -13,9 +14,13 @@ class ChatService {
 
   public async getChats(): Promise<Array<ChatPreview>> {
     return this._apiService
-      .get("https://ya-praktikum.tech/api/v2/chats")
+      .get(`${BaseURL}/chats`)
       .then(result => {
-        return JSON.parse(result.response) as Array<ChatPreview>;
+        try {
+          return JSON.parse(result.response) as Array<ChatPreview>;
+        } catch {
+          throw new Error("Ошибка десериализации объекта");
+        }
       })
       .catch((ex: Exception) => {
         console.error("Ошибка получения списка чатов: " + ex.message);
@@ -26,12 +31,16 @@ class ChatService {
     chatModel: CreateChatModel
   ): Promise<ChatPreview | null> {
     return this._apiService
-      .post("https://ya-praktikum.tech/api/v2/chats", {
+      .post(`${BaseURL}/chats`, {
         data: chatModel,
         method: "post",
       })
       .then(result => {
-        return JSON.parse(result.response) as ChatPreview;
+        try {
+          return JSON.parse(result.response) as ChatPreview;
+        } catch {
+          throw new Error("Ошибка десериализации объекта");
+        }
       })
       .catch((ex: Exception) => {
         console.error("Ошибка создания чата: " + ex);
@@ -39,9 +48,9 @@ class ChatService {
       });
   }
 
-  public async addUsersInChat(users: Array<Number>, chatId: number) {
+  public async addUsersInChat(users: Array<number>, chatId: number) {
     this._apiService
-      .put("https://ya-praktikum.tech/api/v2/chats/users", {
+      .put(`${BaseURL}/chats/users`, {
         data: {
           users: users,
           chatId: chatId,
@@ -53,9 +62,9 @@ class ChatService {
       });
   }
 
-  public async deleteUsersInChat(users: Array<Number>, chatId: number) {
+  public async deleteUsersInChat(users: Array<number>, chatId: number) {
     this._apiService
-      .delete("https://ya-praktikum.tech/api/v2/chats/users", {
+      .delete(`${BaseURL}/chats/users`, {
         data: {
           users: users,
           chatId: chatId,
@@ -69,11 +78,15 @@ class ChatService {
 
   public async getChatToken(chatId: number): Promise<ChatTokenModel | null> {
     return this._apiService
-      .post(`https://ya-praktikum.tech/api/v2/chats/token/${chatId}`, {
+      .post(`${BaseURL}/chats/token/${chatId}`, {
         method: "post",
       })
       .then(result => {
-        return JSON.parse(result.response) as ChatTokenModel;
+        try {
+          return JSON.parse(result.response) as ChatTokenModel;
+        } catch {
+          throw new Error("Ошибка десериализации объекта");
+        }
       })
       .catch((ex: Exception) => {
         console.error("Ошибка удаления пользователя из чата: " + ex.message);

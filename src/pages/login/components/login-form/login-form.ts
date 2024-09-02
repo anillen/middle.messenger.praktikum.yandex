@@ -6,7 +6,7 @@ import FormFooter from "../../../../components/form/components/footer/footer";
 import "./login-form.scss";
 
 import GetFormData from "../../../../../utils/GetFormData";
-import Router from "../../../../../utils/Router";
+import Router from "../../../../../utils/Router/Router";
 import AuthService from "../../../../../services/AuthService/AuthService";
 import SignInModel from "../../../../../services/AuthService/models/SignInModel";
 

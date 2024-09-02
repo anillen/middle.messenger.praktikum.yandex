@@ -1,6 +1,6 @@
 import AuthService from "../../../../../../../services/AuthService/AuthService";
-import Block from "../../../../../../../utils/Block";
-import Router from "../../../../../../../utils/Router";
+import Block from "../../../../../../../utils/Block/Block";
+import Router from "../../../../../../../utils/Router/Router";
 import Button from "../../../../../../components/button/button";
 import actionsWrapperTemplate from "./actions-wrapper.hbs";
 

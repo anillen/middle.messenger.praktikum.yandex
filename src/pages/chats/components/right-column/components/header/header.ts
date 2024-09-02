@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import HeaderContact from "./components/header-contact/header-contact";
 import Button from "../../../../../../components/button/button";
 import headerTemplate from "./header.hbs";

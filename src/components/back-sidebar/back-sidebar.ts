@@ -1,9 +1,9 @@
 import "./back-sidebar.scss";
-import Block from "../../../utils/Block";
+import Block from "../../../utils/Block/Block";
 import Button from "../button/button";
 import backSideBarTemplate from "./back-sidebar.hbs";
 import buttonIcon from "../../../static/arrow-left.svg";
-import Router from "../../../utils/Router";
+import Router from "../../../utils/Router/Router";
 
 
 const backHandler = ()=>{

@@ -1,5 +1,5 @@
-import Block from "./Block";
-import { render } from "./renderDOM";
+import Block from "../Block/Block";
+import { render } from "../renderDOM";
 
 interface Properties {
   rootQuery: string;
@@ -10,14 +10,14 @@ interface Properties {
 export default class Route {
   public isPrivate: boolean;
 
-  private _pathname: string;
+  public pathname: string;
   private _blockClass: any;
   private _block: Block | null;
   private _props: Properties;
   private _root: Element | null;
 
   constructor(pathname: string, view: any, props: Properties) {
-    this._pathname = pathname;
+    this.pathname = pathname;
     this._blockClass = view;
     this._block = null;
     this._props = props;
@@ -27,7 +27,7 @@ export default class Route {
 
   navigate(pathname: string) {
     if (this.match(pathname)) {
-      this._pathname = pathname;
+      this.pathname = pathname;
       this.render();
     }
   }
@@ -39,7 +39,7 @@ export default class Route {
   }
 
   match(pathname: string) {
-    return pathname == this._pathname;
+    return pathname == this.pathname;
   }
 
   render() {
