@@ -12,7 +12,7 @@ interface ChatListItemProperties {
   contentText: string;
   date: string;
   unreadCount?: number;
-  events: any;
+  events: object;
 }
 
 export default class ChatListItem extends Block {

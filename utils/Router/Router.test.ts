@@ -8,7 +8,7 @@ describe("Router", () => {
   }
 
   const router = new Router("main");
-  const testBlock = TestComponent as unknown as Block;
+  const testBlock = TestComponent as unknown as { new (): Block };
 
   it("Test state on go page", () => {
     expect(router).to.be.instanceOf(Router);

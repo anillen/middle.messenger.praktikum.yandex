@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
 import EventBus from "../EventBus";
 
 import { v4 as makeUUID } from "uuid";
@@ -138,7 +140,7 @@ export default class Block {
     const block = this.render();
     this._removeEvents();
     this._element.innerHTML = "";
-    
+
     if (block) {
       this._element.appendChild(block);
     }
@@ -226,7 +228,7 @@ export default class Block {
     }
 
     Object.keys(events).forEach(eventName => {
-      let callback = events[eventName] as EventListener;
+      const callback = events[eventName] as EventListener;
       if (selector == null) {
         this._element.addEventListener(eventName, callback);
       } else {

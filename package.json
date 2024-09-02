@@ -7,15 +7,16 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run checkTypes && npm run test"
+      "pre-commit": "npm run checkTypes && npm run test",
+      "pre-push": "npm run checkTypes && npm run test"
     }
   },
   "scripts": {
     "dev": "vite",
-    "checkTypes": "tsc && eslint .",
+    "checkTypes": "tsc && eslint --config eslint.config.js .",
     "build": "vite build",
     "test": "mocha --config=./.mocharc.json -n import=./mochaloader.js **/*.test.ts",
-    "start": "npm run test && vite build && vite preview --port 3000"
+    "start": "npm run checkTypes && npm run test && vite build && vite preview --port 3000"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.25.4",

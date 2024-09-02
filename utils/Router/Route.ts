@@ -4,19 +4,19 @@ import { render } from "../renderDOM";
 interface Properties {
   rootQuery: string;
   isPrivate: boolean;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export default class Route {
   public isPrivate: boolean;
 
   public pathname: string;
-  private _blockClass: any;
+  private _blockClass: { new (): Block };
   private _block: Block | null;
   private _props: Properties;
   private _root: Element | null;
 
-  constructor(pathname: string, view: any, props: Properties) {
+  constructor(pathname: string, view: { new (): Block }, props: Properties) {
     this.pathname = pathname;
     this._blockClass = view;
     this._block = null;

@@ -20,7 +20,7 @@ export default class SwitchPasswordWrapper extends Block {
     return AccountService.changePassword(dataObject).then(result => result);
   }
 
-  constructor(switchPasswordFormOnSubmit: Function) {
+  constructor(switchPasswordFormOnSubmit: () => void) {
     super("form", {
       errorMessage: "",
       events: {

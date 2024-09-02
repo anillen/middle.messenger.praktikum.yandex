@@ -10,7 +10,7 @@ import {
 import Button from "../../../../../../components/button/button";
 
 export default class SwitchDataWrapper extends Block {
-  constructor(userInfo: UserInfo, formSubmitHandler: Function) {
+  constructor(userInfo: UserInfo, formSubmitHandler: (e: Event) => void) {
     super("form", {
       attributes: {
         class: "switch-data-form",

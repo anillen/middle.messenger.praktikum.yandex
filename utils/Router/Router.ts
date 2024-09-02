@@ -1,3 +1,4 @@
+import Block from "../Block/Block";
 import Route from "./Route";
 
 class Router {
@@ -20,7 +21,11 @@ class Router {
     Router.__instance = this;
   }
 
-  public use<T>(path: string, block: T, isPrivate: boolean = false) {
+  public use(
+    path: string,
+    block: { new (): Block },
+    isPrivate: boolean = false
+  ) {
     const route = new Route(path, block, {
       rootQuery: this._rootQuery,
       isPrivate: isPrivate,

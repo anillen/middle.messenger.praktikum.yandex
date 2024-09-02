@@ -8,8 +8,8 @@ import "./default-wrapper.scss";
 export default class DefaultWrapper extends Block {
   constructor(
     userInfo: UserInfo,
-    switchDataHandler: Function,
-    switchPasswordHandler: Function
+    switchDataHandler: () => void,
+    switchPasswordHandler: () => void
   ) {
     super("div", {
       attributes: {

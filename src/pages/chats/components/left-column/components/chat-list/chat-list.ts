@@ -18,7 +18,7 @@ export default class ChatList extends Block {
               ? new Date(item.last_message.time).toLocaleTimeString()
               : "";
 
-          let chatItem = new ChatListItem({
+          const chatItem = new ChatListItem({
             id: item.id,
             avatarImage: new Image({
               alt: item.avatar ?? circleImage,

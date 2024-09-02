@@ -7,7 +7,7 @@ interface ModalProps {
   body: Block;
   actions: Block;
   isShow: boolean;
-  events: any;
+  events: object;
   errorMessage: string | null;
 }
 

@@ -4,6 +4,7 @@ import template from "./change-avatar-modal.hbs";
 import Input from "../../../../../../components/input/input";
 import Button from "../../../../../../components/button/button";
 import AccountService from "../../../../../../../services/AccountService/AccountService";
+import UserInfo from "../../../../../../../services/AuthService/models/UserInfo";
 
 export default class ChangeAvatarModal extends Block {
   showModal() {
@@ -22,7 +23,7 @@ export default class ChangeAvatarModal extends Block {
       },
     });
   }
-  constructor(onUpdateAvatar: Function) {
+  constructor(onUpdateAvatar: (userInfo: UserInfo | null) => void) {
     super("div", {
       attributes: {
         class: `wrapper`,

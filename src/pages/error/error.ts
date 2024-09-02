@@ -5,7 +5,7 @@ import errorPageTemplate from "./error.hbs";
 
 export default class ErrorPage extends Block {
   constructor() {
-    let splitArray = window.location.pathname.split("/");
+    const splitArray = window.location.pathname.split("/");
     const statusCode = Number(splitArray[splitArray.length-1]);
 
     let title = "Ошибка, над которой мы уже работаем :)";

@@ -87,7 +87,7 @@ export default class DataWrapper extends Block {
     });
   }
 
-  constructor(showAvatarChangeModal: Function) {
+  constructor(showAvatarChangeModal: () => void) {
     AuthService.GetUserInfo().then(result => {
       if (result == null) {
         return;
