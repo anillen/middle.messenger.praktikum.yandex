@@ -33,9 +33,11 @@ export default class FetchService {
   put: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.PUT });
   };
+
   post: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.POST });
   };
+  
   delete: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.DELETE });
   };
@@ -56,7 +58,7 @@ export default class FetchService {
       if (method == "GET" && data) {
         xhr.open(method, `${url}?${queryString(data)}`);
       } else {
-        xhr.open(method, url);
+        xhr.open(method!, url);
       }
 
       Object.keys(headers).forEach(key => {

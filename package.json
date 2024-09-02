@@ -5,6 +5,12 @@
   "engines": {
     "node": ">=20"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all test lint:all",
+      "pre-push": "npm run other command"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "checkTypes": "tsc",
@@ -20,13 +26,16 @@
     "@tsconfig/recommended": "^1.0.7",
     "@types/chai": "^4.3.19",
     "@types/mocha": "^10.0.7",
+    "@types/sinon": "^17.0.3",
     "@types/uuid": "^10.0.0",
     "chai": "^5.1.1",
     "eslint": "^8.57.0",
+    "husky": "^9.1.5",
     "ignore-styles": "^5.0.1",
     "jsdom": "25.0.0",
     "jsdom-global": "3.0.2",
     "mocha": "^10.7.3",
+    "sinon": "^18.0.0",
     "stylelint": "^16.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
