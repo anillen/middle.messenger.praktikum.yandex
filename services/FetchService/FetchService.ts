@@ -1,6 +1,10 @@
 import { queryString } from "../../utils/QueryString";
 import ResponseModel from "../Models/ResponseModel";
 
+export type PlainObject<T = unknown> = {
+  [k in string]: T;
+};
+
 const METHODS = {
   GET: "GET",
   PUT: "PUT",
@@ -15,7 +19,7 @@ interface Header {
 interface FetchServiceOptions {
   headers?: Header;
   method?: string;
-  data?: any;
+  data?: PlainObject;
   formData?: FormData;
   timeout?: number;
 }
@@ -37,7 +41,7 @@ export default class FetchService {
   post: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.POST });
   };
-  
+
   delete: HTTPMethod = (url, options) => {
     return this.request(url, { ...options, method: METHODS.DELETE });
   };
