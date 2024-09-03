@@ -1,9 +1,9 @@
 import "./login.scss";
 import LoginForm from "./components/login-form/login-form";
 import loginTemplate from "./login.hbs";
-import Block from "../../../utils/Block";
+import Block from "../../../utils/Block/Block";
 import AuthService from "../../../services/AuthService/AuthService";
-import Router from "../../../utils/Router";
+import Router from "../../../utils/Router/Router";
 
 const form = new LoginForm();
 export default class Login extends Block {

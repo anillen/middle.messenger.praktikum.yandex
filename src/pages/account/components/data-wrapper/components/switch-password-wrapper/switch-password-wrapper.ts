@@ -1,6 +1,6 @@
 import "./switch-password-wrapper.scss";
 import template from "./switch-password-wrapper.hbs";
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import InputWrapper from "../../../input-wrapper/input-wrapper";
 import { PasswordRegexp } from "../../../../../../../constants/Regexps";
 import Button from "../../../../../../components/button/button";
@@ -20,7 +20,7 @@ export default class SwitchPasswordWrapper extends Block {
     return AccountService.changePassword(dataObject).then(result => result);
   }
 
-  constructor(switchPasswordFormOnSubmit: Function) {
+  constructor(switchPasswordFormOnSubmit: () => void) {
     super("form", {
       errorMessage: "",
       events: {

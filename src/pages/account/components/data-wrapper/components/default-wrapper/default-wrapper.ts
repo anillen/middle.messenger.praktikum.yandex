@@ -1,5 +1,5 @@
 import UserInfo from "../../../../../../../services/AuthService/models/UserInfo";
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import InputWrapper from "../../../input-wrapper/input-wrapper";
 import ActionsWrapper from "../actions-wrapper/actions-wrapper";
 import template from "./default-wrapper.hbs";
@@ -8,8 +8,8 @@ import "./default-wrapper.scss";
 export default class DefaultWrapper extends Block {
   constructor(
     userInfo: UserInfo,
-    switchDataHandler: Function,
-    switchPasswordHandler: Function
+    switchDataHandler: () => void,
+    switchPasswordHandler: () => void
   ) {
     super("div", {
       attributes: {

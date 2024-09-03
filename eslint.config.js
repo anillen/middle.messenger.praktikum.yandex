@@ -7,9 +7,11 @@ export default [
   {
     rules: {
       "eol-last": "error",
+      "@typescript-eslint/ban-types": "warn",
+      "@typescript-eslint/no-explicit-any":"warn",
     },
   },
-  { files: ["**/*.{js,mjs,cjs,ts,scss}"] },
+  { files: ["**/*.ts"] },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,

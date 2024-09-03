@@ -1,5 +1,5 @@
 import navbarTemplate from "./navbar.hbs";
-import Block from "../../utils/Block";
+import Block from "../../utils/Block/Block";
 import "./navbar.scss";
 
 export default class Navbar extends Block {

@@ -1,4 +1,4 @@
-import Block from "../../../../../utils/Block";
+import Block from "../../../../../utils/Block/Block";
 import ChatList from "./components/chat-list/chat-list";
 import Header from "./components/header/header";
 import leftColumTemplate from "./left-column.hbs";

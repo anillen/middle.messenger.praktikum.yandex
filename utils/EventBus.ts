@@ -27,7 +27,7 @@ export default class EventBus {
     );
   }
 
-  emit(event: string, ...args: any[]) {
+  emit(event: string, ...args: unknown[]) {
     if (!this.listeners[event]) {
       throw new Error(`События ${event} не существует!`);
     }

@@ -1,5 +1,5 @@
 import AuthService from "../../../../../services/AuthService/AuthService";
-import Block from "../../../../../utils/Block";
+import Block from "../../../../../utils/Block/Block";
 import "./data-wrapper.scss";
 import dataWrapperTemplate from "./data-wrapper.hbs";
 import Image from "../../../../components/image/image";
@@ -87,7 +87,7 @@ export default class DataWrapper extends Block {
     });
   }
 
-  constructor(showAvatarChangeModal: Function) {
+  constructor(showAvatarChangeModal: () => void) {
     AuthService.GetUserInfo().then(result => {
       if (result == null) {
         return;

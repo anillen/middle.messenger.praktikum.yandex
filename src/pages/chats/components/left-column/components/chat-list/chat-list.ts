@@ -1,4 +1,4 @@
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import ChatListItem from "./components/chat-list-item/chat-list-item";
 import Handlebars from "handlebars";
 import "./chat-list.scss";
@@ -18,7 +18,7 @@ export default class ChatList extends Block {
               ? new Date(item.last_message.time).toLocaleTimeString()
               : "";
 
-          let chatItem = new ChatListItem({
+          const chatItem = new ChatListItem({
             id: item.id,
             avatarImage: new Image({
               alt: item.avatar ?? circleImage,

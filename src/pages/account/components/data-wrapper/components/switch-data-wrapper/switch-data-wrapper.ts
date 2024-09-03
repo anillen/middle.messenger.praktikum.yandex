@@ -1,6 +1,6 @@
 import "./switch-data-wrapper.scss";
 import template from "./switch-data-wrapper.hbs";
-import Block from "../../../../../../../utils/Block";
+import Block from "../../../../../../../utils/Block/Block";
 import UserInfo from "../../../../../../../services/AuthService/models/UserInfo";
 import InputWrapper from "../../../input-wrapper/input-wrapper";
 import {
@@ -10,7 +10,7 @@ import {
 import Button from "../../../../../../components/button/button";
 
 export default class SwitchDataWrapper extends Block {
-  constructor(userInfo: UserInfo, formSubmitHandler: Function) {
+  constructor(userInfo: UserInfo, formSubmitHandler: (e: Event) => void) {
     super("form", {
       attributes: {
         class: "switch-data-form",

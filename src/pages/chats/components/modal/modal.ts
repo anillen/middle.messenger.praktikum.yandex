@@ -1,4 +1,4 @@
-import Block from "../../../../../utils/Block";
+import Block from "../../../../../utils/Block/Block";
 import template from "./modal.hbs";
 import "./modal.scss";
 
@@ -7,7 +7,7 @@ interface ModalProps {
   body: Block;
   actions: Block;
   isShow: boolean;
-  events: any;
+  events: object;
   errorMessage: string | null;
 }
 

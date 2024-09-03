@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import Block from "../../../../../utils/Block";
+import Block from "../../../../../utils/Block/Block";
 import Input from "../../../input/input";
 import formInputTemplate from "./input.hbs";
 import "./input.scss";
